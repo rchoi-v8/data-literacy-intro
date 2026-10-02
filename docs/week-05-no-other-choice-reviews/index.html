@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>어쩔 수가 없다 — 리뷰 데이터 분석</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4f1ea'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%233B6DEA' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23e0402f'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d1524'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23e8b04b' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23e4664d'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -12,131 +12,142 @@
 <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
 <style>
   :root{
-    --paper:#f4f1ea; --paper-2:#ece7dc; --card:#ffffff;
-    --ink:#101826; --ink-soft:#414a5c; --muted:#8b93a3; --line:rgba(14,40,65,.14);
-    --accent:#3B6DEA; --accent-2:#2a53bb; --navy:#0E2841; --coral:#e0402f; --green:#2f8f5b;
+    --film:#0d1524; --film-2:#0a111d; --panel:#151f31; --panel-2:#101826;
+    --ink:#f4f0e6; --ink-soft:#cfccc2; --muted:#8f97a8; --line:rgba(255,255,255,.13);
+    --accent:#e8b04b;        /* 골드 — 메인 포인트 */
+    --blue:#6ea0ff;          /* 호평/긍정 */
+    --red:#e4664d;           /* 혹평/부정 */
+    --strip:38px;
     --display:"Outfit","Pretendard Variable",-apple-system,sans-serif;
     --sans:"Pretendard Variable","Pretendard","Outfit",-apple-system,sans-serif;
     --mono:"IBM Plex Mono",monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
-  body{font-family:var(--sans);color:var(--ink);background:var(--paper);overflow:hidden;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--sans);color:var(--ink);background:var(--film);overflow:hidden;-webkit-font-smoothing:antialiased}
 
-  /* subtle film grain (light) */
-  body::before{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+  /* film grain */
+  body::before{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.16;mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='130' height='130' filter='url(%23n)'/%3E%3C/svg%3E")}
+  body::after{content:"";position:fixed;inset:0;z-index:9997;pointer-events:none;
+    background:radial-gradient(130% 95% at 50% 40%,transparent 60%,rgba(0,0,0,.55) 100%)}
 
-  /* vertical film sprocket strips */
-  .film{position:fixed;top:0;bottom:0;width:16px;z-index:30;pointer-events:none;background:var(--navy);opacity:.9}
-  .film.l{left:0} .film.r{right:0}
-  .film::before{content:"";position:absolute;inset:6px 3px;
-    background-image:repeating-linear-gradient(to bottom,var(--paper) 0 8px,transparent 8px 22px);
-    background-size:10px 22px}
-  .topbar{position:fixed;top:0;left:16px;right:16px;z-index:40;display:flex;justify-content:space-between;align-items:center;
-    padding:15px 28px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
-    border-bottom:1px solid var(--line);background:linear-gradient(var(--paper) 70%,rgba(244,241,234,0))}
-  .topbar .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--coral);margin-right:8px}
-  .bottombar{position:fixed;bottom:0;left:16px;right:16px;z-index:40;display:flex;justify-content:space-between;align-items:center;
-    padding:13px 28px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  /* wide film strips */
+  .film{position:fixed;top:0;bottom:0;width:var(--strip);z-index:30;pointer-events:none;background:var(--film-2)}
+  .film.l{left:0;border-right:1px solid rgba(255,255,255,.06)} .film.r{right:0;border-left:1px solid rgba(255,255,255,.06)}
+  .film::before{content:"";position:absolute;inset:10px 9px;
+    background-image:repeating-linear-gradient(to bottom,rgba(244,240,230,.9) 0 14px,transparent 14px 38px);
+    background-size:20px 38px;border-radius:2px}
+
+  .topbar{position:fixed;top:0;left:var(--strip);right:var(--strip);z-index:40;display:flex;justify-content:space-between;align-items:center;
+    padding:16px 34px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    border-bottom:1px solid var(--line);background:linear-gradient(var(--film) 70%,rgba(13,21,36,0))}
+  .topbar .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red);margin-right:9px}
+  .bottombar{position:fixed;bottom:0;left:var(--strip);right:var(--strip);z-index:40;display:flex;justify-content:space-between;align-items:center;
+    padding:14px 34px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
   .counter b{color:var(--ink);font-weight:500}
-  .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--coral));z-index:50;width:0}
-  .hint{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:40;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.12em}
+  .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--red));z-index:50;width:0}
+  .hint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:40;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.12em}
 
   .stage{position:absolute;inset:0}
   .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
-    padding:68px 5.5vw 64px;opacity:0;visibility:hidden;overflow:hidden;transition:opacity .5s ease,visibility .5s}
+    padding:70px calc(var(--strip) + 4.5vw) 66px;opacity:0;visibility:hidden;overflow:hidden;transition:opacity .5s ease,visibility .5s}
   .slide.active{opacity:1;visibility:visible}
-  .wrap{max-width:1320px;width:100%;margin:0 auto}
+  .wrap{max-width:1360px;width:100%;margin:0 auto}
   [data-rise]{opacity:0;transform:translateY(24px)}
 
   h1,h2,h3{font-family:var(--display);letter-spacing:-.015em}
-  h1{font-weight:900;line-height:.96}
-  h1 em{font-style:normal;color:var(--accent)}
-  h2{font-weight:800;font-size:clamp(34px,4.4vw,64px);line-height:1.02;margin:16px 0 14px}
-  h2 em{font-style:normal;color:var(--accent)}
-  .scene{font-family:var(--mono);font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent)}
+  h1{font-weight:900;line-height:.95}
+  h2{font-weight:800;font-size:clamp(38px,4.9vw,72px);line-height:1.0;margin:16px 0 16px}
+  .e-a{color:var(--accent)} .e-b{color:var(--blue)} .e-r{color:var(--red)}
+  .scene{font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
   .scene b{color:var(--muted);font-weight:400}
-  .chip{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--display);
-    font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:8px 16px;border-radius:999px}
-  .chip .reel{width:15px;height:15px}
-  .sub{font-family:var(--sans);font-weight:400;font-size:clamp(17px,1.65vw,23px);line-height:1.55;color:var(--ink-soft)}
+  .chip{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#0d1524;font-family:var(--display);
+    font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;padding:9px 18px;border-radius:999px}
+  .chip .reel{width:16px;height:16px}
+  .sub{font-family:var(--sans);font-weight:400;font-size:clamp(19px,1.85vw,25px);line-height:1.5;color:var(--ink-soft)}
   .sub b{color:var(--ink);font-weight:700}
 
-  /* sprocket divider */
-  .sprocket{height:12px;margin:22px 0;background-image:repeating-linear-gradient(to right,var(--line) 0 9px,transparent 9px 20px);
-    background-size:20px 12px;background-repeat:repeat-x;opacity:.9}
+  .sprocket{height:14px;margin:22px 0;background-image:repeating-linear-gradient(to right,var(--line) 0 11px,transparent 11px 24px);
+    background-size:24px 14px;background-repeat:repeat-x}
 
-  /* cover */
-  .cover .split2{display:grid;grid-template-columns:1.15fr .85fr;gap:5vw;align-items:center}
-  .cover h1{font-size:clamp(52px,8.2vw,124px);margin:18px 0 16px}
-  .cover .meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:30px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  /* cover — full-bleed poster */
+  .poster-bg{background:var(--film-2) url("assets/poster.jpg") center 24%/cover no-repeat;padding-left:calc(var(--strip) + 6vw)}
+  .poster-bg::before{content:"";position:absolute;inset:0;z-index:0;
+    background:linear-gradient(90deg,rgba(7,11,20,.95) 0%,rgba(7,11,20,.80) 42%,rgba(7,11,20,.35) 72%,rgba(7,11,20,.55) 100%)}
+  .poster-bg .wrap{position:relative;z-index:1}
+  .poster-bg h1{font-size:clamp(54px,8.2vw,128px);margin:18px 0 18px}
+  .cover .meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:32px;font-family:var(--mono);font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
   .cover .meta b{color:var(--ink);font-weight:500}
-  .poster-wrap{position:relative;justify-self:end}
-  .poster{width:min(30vw,360px);display:block;border-radius:6px;box-shadow:0 40px 70px rgba(16,24,38,.28),0 10px 24px rgba(16,24,38,.18)}
-  .poster-wrap::before,.poster-wrap::after{content:"";position:absolute;width:26px;height:26px;border:2px solid var(--accent)}
-  .poster-wrap::before{left:-14px;top:-14px;border-right:0;border-bottom:0}
-  .poster-wrap::after{right:-14px;bottom:-14px;border-left:0;border-top:0}
-  .poster-cap{position:absolute;left:0;bottom:-30px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .poster-credit{position:absolute;right:calc(var(--strip) + 3vw);bottom:74px;z-index:1;font-family:var(--mono);font-size:12px;
+    letter-spacing:.12em;text-transform:uppercase;color:rgba(244,240,230,.7);text-align:right}
 
   /* index row */
-  .idxrow{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;position:relative;margin-top:8px}
-  .idxrow::before{content:"";position:absolute;left:0;right:0;top:21px;height:1px;background:var(--line)}
-  .idxdot{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;
-    font-family:var(--display);font-weight:800;font-size:14px;position:relative;z-index:1}
-  .idxcol .lbl{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.05em;color:var(--accent);margin:18px 0 8px;text-transform:uppercase}
-  .idxcol h3{font-family:var(--display);font-weight:700;font-size:23px;margin-bottom:9px}
-  .idxcol p{font-size:15.5px;line-height:1.55;color:var(--ink-soft)}
+  .idxrow{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;margin-top:8px}
+  .idxrow::before{content:"";position:absolute;left:0;right:0;top:23px;height:1px;background:var(--line)}
+  .idxdot{width:46px;height:46px;border-radius:50%;background:var(--accent);color:#0d1524;display:grid;place-items:center;
+    font-family:var(--display);font-weight:800;font-size:15px;position:relative;z-index:1}
+  .idxcol .lbl{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.05em;color:var(--accent);margin:20px 0 9px;text-transform:uppercase}
+  .idxcol h3{font-family:var(--display);font-weight:700;font-size:26px;margin-bottom:10px}
+  .idxcol p{font-size:17px;line-height:1.55;color:var(--ink-soft)}
 
   /* cards */
-  .grid{display:grid;gap:20px}
-  .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
-  .pcard{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:8px;padding:24px 24px;box-shadow:0 12px 26px rgba(16,24,38,.05)}
-  .pcard.pos{border-top-color:var(--green)} .pcard.neg{border-top-color:var(--coral)}
-  .pcard .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .pcard h3{font-size:20px;font-weight:700;margin:9px 0 9px}
-  .pcard p{font-size:16px;line-height:1.6;color:var(--ink-soft)}
+  .grid{display:grid;gap:22px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  .pcard{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:9px;padding:26px 26px}
+  .pcard.pos{border-top-color:var(--blue)} .pcard.neg{border-top-color:var(--red)}
+  .pcard .tag{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .pcard h3{font-size:22px;font-weight:700;margin:10px 0 10px}
+  .pcard p{font-size:17.5px;line-height:1.6;color:var(--ink-soft)}
 
-  /* stats */
-  .stats{display:flex;gap:min(7vw,96px);flex-wrap:wrap;align-items:flex-end}
-  .stat .v{font-family:var(--display);font-weight:900;font-size:clamp(46px,6.2vw,104px);line-height:.86;letter-spacing:-.03em}
+  /* stats (big) */
+  .stats{display:flex;gap:min(7vw,110px);flex-wrap:wrap;align-items:flex-end}
+  .stat .v{font-family:var(--display);font-weight:900;font-size:clamp(54px,7.4vw,124px);line-height:.84;letter-spacing:-.03em}
   .stat .v small{font-size:.32em;color:var(--muted);margin-left:6px}
-  .stat .l{font-family:var(--mono);font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:12px}
-  .stat.a .v{color:var(--accent)} .stat.p .v{color:var(--green)} .stat.n .v{color:var(--coral)}
+  .stat .l{font-family:var(--mono);font-size:14px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+  .stat.a .v{color:var(--accent)} .stat.p .v{color:var(--blue)} .stat.n .v{color:var(--red)}
 
-  /* framed media (film corner marks) */
-  .shot{position:relative;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;box-shadow:0 18px 40px rgba(16,24,38,.09)}
-  .shot img{display:block;width:auto;max-width:100%;max-height:58vh;height:auto;border-radius:4px;margin:0 auto}
-  .shot::before,.shot::after{content:"";position:absolute;width:20px;height:20px;border:2px solid var(--accent)}
-  .shot::before{left:-9px;top:-9px;border-right:0;border-bottom:0}
-  .shot::after{right:-9px;bottom:-9px;border-left:0;border-top:0}
+  /* vertical stats (slide 7): one per line */
+  .vstats{display:flex;flex-direction:column;gap:20px}
+  .vstat{display:flex;align-items:baseline;gap:20px;border-left:4px solid var(--line);padding-left:20px}
+  .vstat.p{border-color:var(--blue)} .vstat.m{border-color:var(--accent)} .vstat.n{border-color:var(--red)}
+  .vstat .n{font-family:var(--display);font-weight:900;font-size:clamp(40px,4.6vw,72px);line-height:.9;min-width:3.2em}
+  .vstat.p .n{color:var(--blue)} .vstat.m .n{color:var(--accent)} .vstat.n .n{color:var(--red)}
+  .vstat .t{font-size:19px;color:var(--ink-soft)}
+
+  /* transparent media (no white box) */
+  .shot{position:relative}
+  .shot img{display:block;width:auto;max-width:100%;max-height:60vh;height:auto;margin:0 auto}
+  .shot::before,.shot::after{content:"";position:absolute;width:22px;height:22px;border:2px solid var(--accent)}
+  .shot::before{left:-12px;top:-12px;border-right:0;border-bottom:0}
+  .shot::after{right:-12px;bottom:-12px;border-left:0;border-top:0}
   .split{display:grid;grid-template-columns:.92fr 1.08fr;gap:4vw;align-items:center}
   .split.rev{grid-template-columns:1.08fr .92fr}
 
-  .kv{display:grid;grid-template-columns:170px 1fr;gap:12px 26px;font-size:18px;max-width:1000px}
-  .kv dt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:13px 28px;font-size:20px;max-width:1020px}
+  .kv dt{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:4px}
   .kv dd{color:var(--ink-soft)} .kv dd b{color:var(--ink)}
 
-  ul.clean{list-style:none;font-size:18px;line-height:1.7;color:var(--ink-soft)}
-  ul.clean li{position:relative;padding-left:24px;margin-bottom:12px}
+  ul.clean{list-style:none;font-size:20px;line-height:1.66;color:var(--ink-soft)}
+  ul.clean li{position:relative;padding-left:26px;margin-bottom:13px}
   ul.clean li::before{content:"\25B8";position:absolute;left:0;color:var(--accent)}
   ul.clean b{color:var(--ink)}
 
-  .statement{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:24px 28px;border-radius:8px;
-    font-family:var(--display);font-weight:600;font-size:clamp(18px,1.8vw,24px);line-height:1.45}
+  .statement{background:linear-gradient(90deg,var(--accent),#c98a2f);color:#0d1524;padding:26px 30px;border-radius:9px;
+    font-family:var(--display);font-weight:700;font-size:clamp(19px,1.9vw,25px);line-height:1.4}
 
-  .quote{border-left:4px solid var(--accent);padding:6px 0 6px 18px;margin-bottom:18px}
-  .quote.pos{border-color:var(--green)} .quote.neg{border-color:var(--coral)}
-  .quote p{font-size:clamp(16px,1.45vw,19px);line-height:1.5;color:var(--ink)}
-  .quote .who{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--muted);margin-top:7px}
+  .quote{border-left:4px solid var(--accent);padding:6px 0 6px 20px;margin-bottom:20px}
+  .quote.pos{border-color:var(--blue)} .quote.neg{border-color:var(--red)}
+  .quote p{font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:var(--ink)}
+  .quote .who{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;color:var(--muted);margin-top:8px}
 
-  table.debate{width:100%;border-collapse:collapse;font-size:16.5px}
-  table.debate th,table.debate td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
-  table.debate th{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  table.debate td.pro{color:var(--green)} table.debate td.con{color:var(--coral)}
+  table.debate{width:100%;border-collapse:collapse;font-size:18px}
+  table.debate th,table.debate td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+  table.debate th{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  table.debate td.pro{color:var(--blue)} table.debate td.con{color:var(--red)}
   table.debate td:first-child{color:var(--ink);font-weight:700}
 
-  @media (max-width:980px){.split,.split.rev,.cover .split2{grid-template-columns:1fr;gap:26px}.g3,.g4{grid-template-columns:1fr 1fr}.idxrow{grid-template-columns:1fr 1fr}.poster{width:60vw}}
+  @media (max-width:980px){:root{--strip:22px}.split,.split.rev{grid-template-columns:1fr;gap:26px}.g3{grid-template-columns:1fr 1fr}.idxrow{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -149,40 +160,33 @@
 
 <div class="stage" id="stage">
 
-  <!-- 1 cover -->
-  <section class="slide cover active" data-slide>
+  <!-- 1 cover (full-bleed poster) -->
+  <section class="slide cover poster-bg active" data-slide>
     <div class="wrap">
-      <div class="split2">
-        <div>
-          <div class="scene" data-rise>A Watcha Pedia Review Analysis <b>/ 15,824 comments</b></div>
-          <h1 data-rise><em>어쩔 수가</em> 없다</h1>
-          <p class="sub" data-rise>박찬욱 감독, 2025. 왓챠피디아 코멘트 <b>15,824건</b>으로 본 호평과 혹평의 갈림길.</p>
-          <div class="meta">
-            <span data-rise>수집 <b>15,824</b></span>
-            <span data-rise>평균 <b>3.53</b>/5.0</span>
-            <span data-rise>긍정 <b>71.0%</b></span>
-          </div>
-        </div>
-        <div class="poster-wrap" data-rise>
-          <img class="poster" src="assets/poster.jpg" alt="어쩔 수가 없다 포스터" />
-          <div class="poster-cap">Park Chan-wook · 2025</div>
-        </div>
+      <div class="scene" data-rise>A Watcha Pedia Review Analysis <b>/ 15,824 comments</b></div>
+      <h1 data-rise><span class="e-a">어쩔 수가</span> 없다</h1>
+      <p class="sub" data-rise>박찬욱 감독, 2025.<br>왓챠피디아 코멘트 <b>15,824건</b>으로 본 호평과 혹평의 갈림길.</p>
+      <div class="meta">
+        <span data-rise>수집 <b>15,824</b></span>
+        <span data-rise>평균 <b>3.53</b>/5.0</span>
+        <span data-rise>긍정 <b>71.0%</b></span>
       </div>
     </div>
+    <div class="poster-credit" data-rise>Park Chan-wook · 2025<br>Watcha Pedia</div>
   </section>
 
   <!-- 2 agenda -->
   <section class="slide" data-slide>
     <div class="wrap">
-      <span class="chip" data-rise><svg class="reel" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" fill="#fff"/><circle cx="12" cy="6.4" r="1.6" fill="#fff"/><circle cx="17" cy="15" r="1.6" fill="#fff"/><circle cx="7" cy="15" r="1.6" fill="#fff"/></svg>Agenda · 01–04</span>
-      <h2 data-rise>오늘의 <em>구성</em></h2>
+      <span class="chip" data-rise><svg class="reel" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#0d1524" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" fill="#0d1524"/><circle cx="12" cy="6.4" r="1.6" fill="#0d1524"/><circle cx="17" cy="15" r="1.6" fill="#0d1524"/><circle cx="7" cy="15" r="1.6" fill="#0d1524"/></svg>Agenda · 01–04</span>
+      <h2 data-rise>오늘의 <span class="e-a">구성</span></h2>
       <p class="sub" data-rise>한 편의 영화를 데이터로 다시 봅니다.</p>
       <div class="sprocket" data-rise></div>
       <div class="idxrow">
-        <div class="idxcol" data-rise><div class="idxdot">01</div><div class="lbl">Intro</div><h3>영화 개요</h3><p>작품 정보와 감독, 그리고 분석 대상.</p></div>
-        <div class="idxcol" data-rise><div class="idxdot">02</div><div class="lbl">Data</div><h3>수집과 방법</h3><p>15,824건의 코멘트를 어떻게 모았나.</p></div>
-        <div class="idxcol" data-rise><div class="idxdot">03</div><div class="lbl">Findings</div><h3>평점·키워드·반응</h3><p>별점 분포, 추이, 키워드, 집중도.</p></div>
-        <div class="idxcol" data-rise><div class="idxdot">04</div><div class="lbl">Debate</div><h3>호평 vs 혹평</h3><p>무엇이 갈리고, 무엇이 남는가.</p></div>
+        <div class="idxcol" data-rise><div class="idxdot">01</div><div class="lbl">Intro</div><h3>영화 개요</h3><p>작품 정보와 감독,<br>그리고 분석 대상.</p></div>
+        <div class="idxcol" data-rise><div class="idxdot">02</div><div class="lbl">Data</div><h3>수집과 방법</h3><p>15,824건의 코멘트를<br>어떻게 모았나.</p></div>
+        <div class="idxcol" data-rise><div class="idxdot">03</div><div class="lbl">Findings</div><h3>평점·키워드·반응</h3><p>별점 분포, 추이,<br>키워드, 집중도.</p></div>
+        <div class="idxcol" data-rise><div class="idxdot">04</div><div class="lbl">Debate</div><h3>호평 vs 혹평</h3><p>무엇이 갈리고,<br>무엇이 남는가.</p></div>
       </div>
     </div>
   </section>
@@ -191,8 +195,8 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>01. Intro</span>
-      <h2 data-rise>영화 <em>개요</em></h2>
-      <div class="split" style="align-items:start">
+      <h2 data-rise>영화 <span class="e-a">개요</span></h2>
+      <div class="split" style="align-items:center">
         <dl class="kv">
           <dt data-rise>제목</dt><dd data-rise>어쩔 수가 없다 (No Other Choice)</dd>
           <dt data-rise>감독</dt><dd data-rise><b>박찬욱</b></dd>
@@ -202,7 +206,7 @@
           <dt data-rise>원작</dt><dd data-rise>도널드 E. 웨스트레이크의 소설 《The Ax》</dd>
           <dt data-rise>무대</dt><dd data-rise>제30회 부산국제영화제 개막작</dd>
         </dl>
-        <div class="shot" data-rise><img src="assets/poster.jpg" alt="포스터" style="max-height:60vh;width:auto;margin:0 auto"/></div>
+        <div class="shot" data-rise><img src="assets/poster.jpg" alt="포스터" style="max-height:62vh"/></div>
       </div>
     </div>
   </section>
@@ -211,13 +215,13 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>02. Data</span>
-      <h2 data-rise>데이터와 <em>방법</em></h2>
+      <h2 data-rise>데이터와 <span class="e-a">방법</span></h2>
       <div class="grid g3">
-        <div class="pcard" data-rise><span class="tag">Source</span><h3>왓챠피디아 코멘트</h3><p>좋아요 순 전체 <b>15,824건</b> 수집(중복 0). 별점 입력 15,750건, 미입력 74건.</p></div>
-        <div class="pcard" data-rise><span class="tag">Metrics</span><h3>분석 지표</h3><p>별점 분포·긍부정·시기별 추이·키워드 빈도·좋아요 상위 리뷰.</p></div>
-        <div class="pcard" data-rise><span class="tag">Caveat</span><h3>표본의 한계</h3><p>자발적 텍스트 리뷰 표본. 전체 별점(약 13.4만 건, 평균 3.5)과 모집단이 다름.</p></div>
+        <div class="pcard" data-rise><span class="tag">Source</span><h3>왓챠피디아 코멘트</h3><p>좋아요 순 전체 <b>15,824건</b> 수집(중복 0).<br>별점 입력 15,750건, 미입력 74건.</p></div>
+        <div class="pcard" data-rise><span class="tag">Metrics</span><h3>분석 지표</h3><p>별점 분포·긍부정·시기별 추이·<br>키워드 빈도·좋아요 상위 리뷰.</p></div>
+        <div class="pcard" data-rise><span class="tag">Caveat</span><h3>표본의 한계</h3><p>자발적 텍스트 리뷰 표본.<br>전체 별점(약 13.4만 건, 평균 3.5)과 다름.</p></div>
       </div>
-      <p class="sub" data-rise style="margin-top:26px">개봉 직후인 <b>2025-09·10</b>에 전체 코멘트의 약 64%가 집중됩니다.</p>
+      <p class="sub" data-rise style="margin-top:26px">개봉 직후인 <b>2025-09·10</b>에<br>전체 코멘트의 약 64%가 집중됩니다.</p>
     </div>
   </section>
 
@@ -225,13 +229,13 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>03. Findings</span>
-      <h2 data-rise>숫자로 본 <em>총평</em></h2>
+      <h2 data-rise>숫자로 본 <span class="e-a">총평</span></h2>
       <div class="stats" style="margin-top:10px">
         <div class="stat a" data-rise><div class="v">3.53</div><div class="l">평균 별점</div></div>
         <div class="stat p" data-rise><div class="v">71.0<small>%</small></div><div class="l">긍정 (3.5+)</div></div>
         <div class="stat n" data-rise><div class="v">7.5<small>%</small></div><div class="l">부정 (&lt;2.5)</div></div>
       </div>
-      <p class="sub" data-rise style="margin-top:34px">호평 우위(약 7할)이지만, 소수의 강한 비판이 공존하는 <b>고평균·고분산</b> 작품.</p>
+      <p class="sub" data-rise style="margin-top:32px">호평 우위(약 7할)이지만,<br>소수의 강한 비판이 공존하는 <b>고평균·고분산</b> 작품.</p>
     </div>
   </section>
 
@@ -239,14 +243,14 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>03. Findings</span>
-      <h2 data-rise>별점 <em>분포</em></h2>
+      <h2 data-rise><span class="e-a">별점</span> 분포</h2>
       <div class="split">
         <div>
-          <p class="sub">4.0(30.4%)과 3.5(26.2%)가 전체의 <b>56.6%</b>. 최빈값은 4.0.</p>
+          <p class="sub">4.0(30.4%)과 3.5(26.2%)가<br>전체의 <b>56.6%</b>. 최빈값은 4.0.</p>
           <ul class="clean" style="margin-top:22px">
             <li>표준편차 <b>0.83</b> — 5.0(576)과 0.5(192) 공존</li>
             <li>3.0 이상 누적 약 <b>92%</b></li>
-            <li>“잘 만들었지만 만장일치는 아닌” 박찬욱 영화의 전형</li>
+            <li>“잘 만들었지만 만장일치는 아닌”<br>박찬욱 영화의 전형</li>
           </ul>
         </div>
         <div class="shot" data-rise><img src="assets/rating_distribution.png" alt="별점 분포"/></div>
@@ -254,20 +258,20 @@
     </div>
   </section>
 
-  <!-- 7 sentiment -->
+  <!-- 7 sentiment (vertical stats) -->
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>03. Findings</span>
-      <h2 data-rise>호평과 <em>비판</em></h2>
+      <h2 data-rise><span class="e-b">호평</span>과 <span class="e-r">비판</span></h2>
       <div class="split rev">
         <div class="shot" data-rise><img src="assets/sentiment_donut.png" alt="평가 비율"/></div>
         <div>
-          <div class="stats" style="gap:34px">
-            <div class="stat p" data-rise><div class="v">11,181</div><div class="l">긍정 3.5+</div></div>
-            <div class="stat" data-rise><div class="v" style="color:var(--muted)">3,388</div><div class="l">중립</div></div>
-            <div class="stat n" data-rise><div class="v">1,181</div><div class="l">부정 &lt;2.5</div></div>
+          <div class="vstats">
+            <div class="vstat p" data-rise><span class="n">11,181</span><span class="t">긍정 (3.5+)</span></div>
+            <div class="vstat m" data-rise><span class="n">3,388</span><span class="t">중립 (2.5–3.0)</span></div>
+            <div class="vstat n" data-rise><span class="n">1,181</span><span class="t">부정 (2.5 미만)</span></div>
           </div>
-          <p class="sub" style="margin-top:28px">부정 1,181건은 단순 불호가 아니라 <b>논리적 비판</b>이 많아 영향력이 큽니다.</p>
+          <p class="sub" data-rise style="margin-top:30px">부정 1,181건은 단순 불호가 아니라<br><b>논리적 비판</b>이 많아 영향력이 큽니다.</p>
         </div>
       </div>
     </div>
@@ -277,9 +281,9 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>03. Findings</span>
-      <h2 data-rise>시기별 <em>반응</em></h2>
+      <h2 data-rise>시기별 <span class="e-a">반응</span></h2>
       <div class="shot" data-rise><img src="assets/monthly_trend.png" alt="시기별 추이"/></div>
-      <p class="sub" data-rise style="margin-top:18px">개봉 초 3.61 → 이후 3.3~3.5로 완만히 하락. 팬덤 호평이 일반 관객 유입과 함께 조정되는 궤적.</p>
+      <p class="sub" data-rise style="margin-top:16px">개봉 초 3.61 → 이후 3.3~3.5로 완만히 하락.<br>팬덤 호평이 일반 관객 유입과 함께 조정되는 궤적.</p>
     </div>
   </section>
 
@@ -287,15 +291,15 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>03. Findings</span>
-      <h2 data-rise>무엇을 <em>말하는가</em></h2>
+      <h2 data-rise><span class="e-a">무엇을</span> 말하는가</h2>
       <div class="split">
         <div>
           <ul class="clean">
-            <li><b>자본</b>(3.75) · <b>블랙코미디</b>(3.72) · <b>결말</b>(3.71) — 언급 리뷰 평균 높음</li>
-            <li><b>연출</b>(750회) · <b>미장센</b>(360회) — 스타일 찬사 압도적</li>
+            <li><b>자본</b>(3.75) · <b>블랙코미디</b>(3.72) · <b>결말</b>(3.71)<br>— 언급 리뷰 평균 높음</li>
+            <li><b>연출</b>(750회) · <b>미장센</b>(360회)<br>— 스타일 찬사 압도적</li>
             <li><b>지루</b>(3.11) · <b>어렵</b> · <b>아쉽</b> — 혹평의 핵심축</li>
           </ul>
-          <p class="sub" style="margin-top:20px">키워드의 평균 별점이 곧 만족도의 분기점입니다.</p>
+          <p class="sub" style="margin-top:20px">키워드의 평균 별점이<br>곧 만족도의 분기점입니다.</p>
         </div>
         <div class="shot" data-rise><img src="assets/keyword_sentiment.png" alt="키워드 분석"/></div>
       </div>
@@ -306,14 +310,14 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>03. Findings</span>
-      <h2 data-rise>좋아요 <em>집중도</em></h2>
+      <h2 data-rise><span class="e-a">좋아요</span> 집중도</h2>
       <div class="split rev">
         <div class="shot" data-rise><img src="assets/likes_concentration.png" alt="좋아요 집중도"/></div>
         <div>
-          <p class="sub">상위 10개 리뷰가 전체 좋아요의 <b>37.5%</b>를 독식(총 42,818).</p>
+          <p class="sub">상위 10개 리뷰가 전체 좋아요의<br><b>37.5%</b>를 독식(총 42,818).</p>
           <ul class="clean" style="margin-top:18px">
             <li>좋아요를 받은 코멘트는 <b>35.5%</b>뿐</li>
-            <li>최다 좋아요(♥5,597)는 “인물=내면의 표상” 해석 리뷰</li>
+            <li>최다 좋아요(♥5,597)는<br>“인물=내면의 표상” 해석 리뷰</li>
             <li>소수의 해석형 리뷰가 여론을 주도</li>
           </ul>
         </div>
@@ -325,7 +329,7 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>04. Debate · Praise</span>
-      <h2 data-rise>호평 <em>요인</em></h2>
+      <h2 data-rise><span class="e-b">호평</span> 요인</h2>
       <div class="grid g3">
         <div class="pcard pos" data-rise><span class="tag">Craft</span><h3>연출 · 미장센 · 음악</h3><p>“정밀하면서 기개와 투지가 어우러지는 연출”(♥770).</p></div>
         <div class="pcard pos" data-rise><span class="tag">Tone</span><h3>블랙코미디 · 풍자</h3><p>무거운 주제를 웃음으로 포장. “웃어야 할지 울어야 할지.”</p></div>
@@ -341,7 +345,7 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>04. Debate · Criticism</span>
-      <h2 data-rise>혹평 <em>요인</em></h2>
+      <h2 data-rise><span class="e-r">혹평</span> 요인</h2>
       <div class="grid g3">
         <div class="pcard neg" data-rise><span class="tag">Motive</span><h3>동기 부여의 빈약</h3><p>“이 정도 해고에 연쇄살인까지?” 개연성 부족.</p></div>
         <div class="pcard neg" data-rise><span class="tag">Class</span><h3>‘계급 없는 계급 영화’</h3><p>전작의 계급 균열 대신 중산층 가장의 위기(♥1007).</p></div>
@@ -357,9 +361,9 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>04. Debate</span>
-      <h2 data-rise>무엇이 <em>갈리는가</em></h2>
+      <h2 data-rise>무엇이 <span class="e-a">갈리는가</span></h2>
       <table class="debate">
-        <thead><tr data-rise><th>쟁점</th><th>호평 진영</th><th>혹평 진영</th></tr></thead>
+        <thead><tr data-rise><th>쟁점</th><th style="color:var(--blue)">호평 진영</th><th style="color:var(--red)">혹평 진영</th></tr></thead>
         <tbody>
           <tr data-rise><td>알레고리</td><td class="pro">인물=내면의 분신, 다층적 상징</td><td class="con">동기 빈약을 가린다</td></tr>
           <tr data-rise><td>‘기생충’ 비교</td><td class="pro">박찬욱식 계급 풍자의 진화</td><td class="con">이미 본 서사</td></tr>
@@ -368,7 +372,7 @@
           <tr data-rise><td>중산층 설정</td><td class="pro">자본주의 보편 서사</td><td class="con">계급성 흐림</td></tr>
         </tbody>
       </table>
-      <p class="sub" data-rise style="margin-top:18px">〈기생충〉(495회)·〈헤어질 결심〉(278회)과 비교되며 박찬욱 필모의 연장선에서 논해집니다.</p>
+      <p class="sub" data-rise style="margin-top:18px">〈기생충〉(495회)·〈헤어질 결심〉(278회)과 비교되며<br>박찬욱 필모의 연장선에서 논해집니다.</p>
     </div>
   </section>
 
@@ -376,15 +380,15 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>04. Debate · Voices</span>
-      <h2 data-rise>대표 <em>리뷰</em></h2>
-      <div class="grid g2" style="gap:36px">
+      <h2 data-rise>대표 <span class="e-a">리뷰</span></h2>
+      <div class="grid g2" style="gap:40px">
         <div>
-          <div class="quote pos" data-rise><p>“이성민·차승원·박희순은 주인공 내면의 표상… 스스로를 악인이라 생각하는 사람은 없다.”</p><div class="who">다영 · ♥5,597 · 4.0</div></div>
-          <div class="quote pos" data-rise><p>“죄를 차곡차곡 묻다 보면 나무가 자라날 거예요… 어쩔수가 없잖아요?”</p><div class="who">영화는좋은데… · ♥705 · 5.0</div></div>
+          <div class="quote pos" data-rise><p>“이성민·차승원·박희순은 주인공 내면의 표상…<br>스스로를 악인이라 생각하는 사람은 없다.”</p><div class="who">다영 · ♥5,597 · 4.0</div></div>
+          <div class="quote pos" data-rise><p>“죄를 차곡차곡 묻다 보면 나무가 자라날 거예요…<br>어쩔수가 없잖아요?”</p><div class="who">영화는좋은데… · ♥705 · 5.0</div></div>
         </div>
         <div>
-          <div class="quote neg" data-rise><p>“왜 이렇게 기분이 나쁠까… ‘계급 없는 계급 영화’라는 점.”</p><div class="who">씨네픽션 · ♥1,007 · 2.0</div></div>
-          <div class="quote neg" data-rise><p>“주인공 행위에 대한 강력한 동기를 설득시키는 게 기초인데 그걸 간과했다.”</p><div class="who">DL · ♥262 · 0.5</div></div>
+          <div class="quote neg" data-rise><p>“왜 이렇게 기분이 나쁠까…<br>‘계급 없는 계급 영화’라는 점.”</p><div class="who">씨네픽션 · ♥1,007 · 2.0</div></div>
+          <div class="quote neg" data-rise><p>“주인공 행위에 대한 강력한 동기를<br>설득시키는 게 기초인데 그걸 간과했다.”</p><div class="who">DL · ♥262 · 0.5</div></div>
         </div>
       </div>
     </div>
@@ -394,13 +398,13 @@
   <section class="slide" data-slide>
     <div class="wrap">
       <span class="chip" data-rise>Conclusion</span>
-      <h2 data-rise>결론 · <em>시사점</em></h2>
-      <ul class="clean" style="max-width:1000px;margin-bottom:26px">
+      <h2 data-rise>결론 · <span class="e-a">시사점</span></h2>
+      <ul class="clean" style="max-width:1040px;margin-bottom:26px">
         <li data-rise><b>호평 우위의 양극단 작품.</b> 71%가 3.5 이상, 7.5%는 강한 비판.</li>
-        <li data-rise><b>만족도는 ‘상징·알레고리를 즐길 수 있는가’에 갈린다.</b> 해석형 리뷰가 좋아요 상위를 독식.</li>
+        <li data-rise><b>만족도는 ‘상징·알레고리를 즐길 수 있는가’에 갈린다.</b><br>해석형 리뷰가 좋아요 상위를 독식.</li>
         <li data-rise><b>시간이 지날수록 완만히 하락.</b> 초기 팬덤 → 일반 관객 유입.</li>
       </ul>
-      <div class="statement" data-rise>마케팅 시사점 — ‘블랙코미디·알레고리’라는 기대치를 명확히 제시하는 것이 만족도의 열쇠.</div>
+      <div class="statement" data-rise>마케팅 시사점 — ‘블랙코미디·알레고리’라는 기대치를<br>명확히 제시하는 것이 만족도의 열쇠.</div>
     </div>
   </section>
 
@@ -408,9 +412,9 @@
   <section class="slide cover" data-slide>
     <div class="wrap">
       <div class="scene" data-rise>Fin <b>/ Q&amp;A</b></div>
-      <h1 data-rise style="font-size:clamp(50px,7.4vw,104px);margin:16px 0 18px"><em>어쩔 수가</em> 없다</h1>
-      <p class="sub" data-rise style="max-width:820px">데이터는 결론을 대신하지 않습니다. 다만 <b>어디서 갈리는지</b>는 보여줍니다.</p>
-      <div class="cover meta" style="display:flex;gap:24px;margin-top:30px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">
+      <h1 data-rise style="font-size:clamp(50px,7.4vw,108px);margin:16px 0 18px"><span class="e-a">어쩔 수가</span> 없다</h1>
+      <p class="sub" data-rise style="max-width:820px">데이터는 결론을 대신하지 않습니다.<br>다만 <b>어디서 갈리는지</b>는 보여줍니다.</p>
+      <div class="meta" style="display:flex;gap:30px;margin-top:32px;font-family:var(--mono);font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">
         <span data-rise>데이터 <b style="color:var(--ink)">Watcha Pedia</b></span>
         <span data-rise>분석 <b style="color:var(--ink)">Intro to Data Literacy · Week 05</b></span>
       </div>
