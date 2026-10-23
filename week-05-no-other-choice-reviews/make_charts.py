@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """왓챠피디아 리뷰 JSON에서 발표용 차트 이미지를 생성한다.
 
-다크(필름) 배경 위에 얹도록 투명 배경 + 라이트 텍스트로 렌더한다.
+투명 배경 차트를 렌더하며, 슬라이드 배경에 맞춰 다크/라이트 팔레트를 고른다.
 
 사용법:
-    python3 make_charts.py <reviews.json> [out_dir]
+    python3 make_charts.py <reviews.json> [out_dir] [--light]
 """
 import json
 import sys
@@ -17,15 +17,32 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
-# ---- palette (dark / film) ----------------------------------------------
-INK = "#f2eee4"
-INK_SOFT = "#cfccc2"
-MUTED = "#9aa2b1"
-LINE = "#33415c"
-GOLD = "#e8b04b"
-BLUE = "#6ea0ff"
-RED = "#e4664d"
-ORANGE = "#e8965a"
+# ---- palette ------------------------------------------------------------
+ARGV = [a for a in sys.argv if a != "--light"]
+LIGHT = len(ARGV) != len(sys.argv)
+
+if LIGHT:
+    BG = "#f6f7f9"
+    INK = "#141a24"
+    INK_SOFT = "#414a5a"
+    MUTED = "#77808f"
+    LINE = "#d2d8e2"
+    GOLD = "#c07f14"
+    BLUE = "#4a7fe0"
+    RED = "#d15238"
+    ORANGE = "#d9814a"
+    BAR_GRAY = "#c7d0de"
+else:
+    BG = "#0d1524"
+    INK = "#f2eee4"
+    INK_SOFT = "#cfccc2"
+    MUTED = "#9aa2b1"
+    LINE = "#33415c"
+    GOLD = "#e8b04b"
+    BLUE = "#6ea0ff"
+    RED = "#e4664d"
+    ORANGE = "#e8965a"
+    BAR_GRAY = "#3a4a68"
 
 for fam in ["Apple SD Gothic Neo", "AppleGothic", "NanumGothic", "Noto Sans CJK KR"]:
     try:
@@ -55,8 +72,8 @@ def save(fig, out):
 
 
 # ---- load ----------------------------------------------------------------
-src = Path(sys.argv[1] if len(sys.argv) > 1 else "watcha_no_other_choice_reviews.json")
-out_dir = Path(sys.argv[2] if len(sys.argv) > 2 else "reports")
+src = Path(ARGV[1] if len(ARGV) > 1 else "watcha_no_other_choice_reviews.json")
+out_dir = Path(ARGV[2] if len(ARGV) > 2 else "reports")
 out_dir.mkdir(parents=True, exist_ok=True)
 data = json.loads(src.read_text(encoding="utf-8"))
 reviews = data["reviews"]
@@ -104,7 +121,7 @@ nice = ["긍정 3.5+", "중립 2.5–3.0", "부정 <2.5"]
 cols = [BLUE, GOLD, RED]
 fig, ax = plt.subplots(figsize=(8.2, 6.4))
 w, t, at = ax.pie(sizes, colors=cols, startangle=90, counterclock=False,
-                  wedgeprops=dict(width=0.36, edgecolor="#0d1524", linewidth=3),
+                  wedgeprops=dict(width=0.36, edgecolor=BG, linewidth=3),
                   autopct=lambda p: f"{p:.1f}%", pctdistance=0.79,
                   textprops=dict(color=INK, fontsize=14, fontweight="bold"))
 ax.text(0, 0.08, f"{agg['avg_rating']}", ha="center", va="center", fontsize=48, color=INK, fontweight="bold")
@@ -123,7 +140,7 @@ months = sorted(m for m in by_month if len(by_month[m]) >= 30)
 cnts = [len(by_month[m]) for m in months]
 avgs = [statistics.mean(by_month[m]) for m in months]
 fig, ax = plt.subplots(figsize=(12, 5.6))
-ax.bar(months, cnts, color="#3a4a68", width=0.62, label="코멘트 수")
+ax.bar(months, cnts, color=BAR_GRAY, width=0.62, label="코멘트 수")
 ax.set_ylabel("코멘트 수", color=INK_SOFT, fontsize=14)
 ax.tick_params(axis="x", rotation=40)
 ax2 = ax.twinx()
