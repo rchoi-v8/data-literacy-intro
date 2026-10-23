@@ -34,7 +34,7 @@ data-literacy-intro/
 │  ├─ reports/               # 생성된 차트 이미지 5종
 │  ├─ REPORT.md
 │  └─ README.md
-├─ week-06-no-other-choice-reviews/   # 같은 분석의 06주차 배포본
+├─ week-06-no-other-choice-reviews/   # 같은 분석의 6주차 배포본
 │  ├─ make_charts.py
 │  ├─ data/
 │  ├─ reports/
@@ -45,7 +45,7 @@ data-literacy-intro/
    ├─ week-03-titanic/       # 타이타닉 발표 덱
    ├─ week-03-pima-indians-diabetes/  # 당뇨 발표 덱
    ├─ week-05-no-other-choice-reviews/ # 〈어쩔 수가 없다〉 발표 덱
-   └─ week-06-no-other-choice-reviews/ # 06주차 발표 덱
+   └─ week-06-no-other-choice-reviews/ # 6주차 발표 덱
 ```
 
 ## 발표 사이트 (GitHub Pages)
