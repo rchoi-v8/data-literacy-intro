@@ -33,16 +33,16 @@ if LIGHT:
     ORANGE = "#c9773a"
     BAR_GRAY = "#d8cdb8"
 else:
-    BG = "#0d1524"
-    INK = "#f2eee4"
-    INK_SOFT = "#cfccc2"
+    BG = "#101a2b"
+    INK = "#ede9df"
+    INK_SOFT = "#c9c6bc"
     MUTED = "#9aa2b1"
-    LINE = "#33415c"
+    LINE = "#2c3a52"
     GOLD = "#e8b04b"
-    BLUE = "#6ea0ff"
-    RED = "#e4664d"
+    BLUE = "#7fa9ff"
+    RED = "#f07a63"
     ORANGE = "#e8965a"
-    BAR_GRAY = "#3a4a68"
+    BAR_GRAY = "#33425c"
 
 for fam in ["Apple SD Gothic Neo", "AppleGothic", "NanumGothic", "Noto Sans CJK KR"]:
     try:

@@ -50,30 +50,18 @@
   .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--red));z-index:50;width:0}
   .hint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:40;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.12em}
 
-  /* light chrome while a content slide is active */
-  .film,.topbar,.bottombar{transition:background .45s ease,color .45s ease,border-color .45s ease}
-  body.light .topbar{color:#7a7266;border-bottom-color:rgba(26,24,21,.14);background:linear-gradient(#f7f2e8 70%,rgba(247,242,232,0))}
-  body.light .topbar .dot{background:#c8402a}
-  body.light .bottombar{color:#7a7266}
-  body.light .counter b{color:#1a1815}
-  body.light .hint{color:#7a7266}
-  body.light .film{background:#efe8da;border-color:rgba(26,24,21,.07)}
-  body.light .film::before{background-image:repeating-linear-gradient(to bottom,rgba(26,24,21,.18) 0 14px,transparent 14px 38px)}
-  body.light .progress{background:linear-gradient(90deg,#c08a2f,#c8402a)}
-  body.light::before{opacity:.05;mix-blend-mode:multiply}
-  body.light::after{background:radial-gradient(130% 95% at 50% 40%,transparent 70%,rgba(60,45,20,.08) 100%)}
 
   .stage{position:absolute;inset:0}
   .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
     padding:70px calc(var(--strip) + 4.5vw) 66px;opacity:0;visibility:hidden;overflow:hidden;transition:opacity .5s ease,visibility .5s}
   .slide.active{opacity:1;visibility:visible}
   /* light slides (2–16) — cover keeps the dark poster */
-  .slide:not(.poster-bg){background:#f7f2e8;color:var(--ink);
-    --ink:#1a1815; --ink-soft:#4a463f; --muted:#7a7266; --line:rgba(26,24,21,.14);
-    --panel:#fffefa; --panel-2:#f8f1e3;
-    --accent:#a8690c; --accent-solid:#e8b04b;
-    --blue:#2f6bd8; --red:#c8402a;}
-  .slide:not(.poster-bg) .pcard{box-shadow:0 1px 2px rgba(74,58,30,.07)}
+  .slide:not(.poster-bg){background:#101a2b;color:var(--ink);
+    --ink:#ede9df; --ink-soft:#c9c6bc; --muted:#9aa2b1; --line:rgba(255,255,255,.13);
+    --panel:#172132; --panel-2:#111a29;
+    --accent:#e8b04b; --accent-solid:#e8b04b;
+    --blue:#7fa9ff; --red:#f07a63;}
+  .slide:not(.poster-bg) .pcard{box-shadow:0 1px 2px rgba(0,0,0,.25)}
   .wrap{max-width:1360px;width:100%;margin:0 auto}
   [data-rise]{opacity:0;transform:translateY(24px)}
 
@@ -142,7 +130,7 @@
   .figcap{margin-top:10px;text-align:center;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--muted)}
   .poster-figure{margin:0;justify-self:end;align-self:center}
   .poster-figure img{display:block;height:min(70vh,660px);width:auto;border-radius:5px;
-    box-shadow:0 24px 48px -20px rgba(60,42,14,.42),0 2px 8px rgba(60,42,14,.10)}
+    box-shadow:0 24px 48px -20px rgba(0,0,0,.55),0 2px 8px rgba(0,0,0,.28)}
   .split{display:grid;grid-template-columns:.92fr 1.08fr;gap:4vw;align-items:center}
   .split.rev{grid-template-columns:1.08fr .92fr}
 
@@ -475,7 +463,6 @@
     const cur=slides[idx],nxt=slides[n];
     cur.classList.remove('active'); reset(cur);
     idx=n; nxt.classList.add('active'); reset(nxt); animate(nxt);
-    document.body.classList.toggle('light', idx>0);
     progress.style.width=(idx/(total-1)*100)+'%';
     counter.innerHTML='<b>'+pad(idx+1)+'</b> / '+pad(total);
     setTimeout(()=>busy=false,reduce?50:240);
