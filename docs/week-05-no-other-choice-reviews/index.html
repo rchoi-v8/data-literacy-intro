@@ -139,9 +139,9 @@
   /* transparent media (no white box) */
   .shot{position:relative}
   .shot img{display:block;width:auto;max-width:100%;max-height:60vh;height:auto;margin:0 auto}
-  .shot::before,.shot::after{content:"";position:absolute;width:22px;height:22px;border:2px solid var(--accent)}
-  .shot::before{left:-12px;top:-12px;border-right:0;border-bottom:0}
-  .shot::after{right:-12px;bottom:-12px;border-left:0;border-top:0}
+  .poster-figure{margin:0;justify-self:end;align-self:center}
+  .poster-figure img{display:block;height:min(70vh,660px);width:auto;border-radius:5px;
+    box-shadow:0 24px 48px -20px rgba(60,42,14,.42),0 2px 8px rgba(60,42,14,.10)}
   .split{display:grid;grid-template-columns:.92fr 1.08fr;gap:4vw;align-items:center}
   .split.rev{grid-template-columns:1.08fr .92fr}
 
@@ -223,11 +223,11 @@
           <dt data-rise>감독</dt><dd data-rise><b>박찬욱</b></dd>
           <dt data-rise>개봉</dt><dd data-rise>2025년 · 한국 · 139분</dd>
           <dt data-rise>장르</dt><dd data-rise>스릴러 · 코미디 · 범죄 · 드라마</dd>
-          <dt data-rise>출연</dt><dd data-rise>이병헌, 손예진, 이성민, 차승원, 박희순, 염혜란, 김해숙</dd>
+          <dt data-rise>출연</dt><dd data-rise>이병헌, 손예진, 이성민, 차승원,<br>박희순, 염혜란, 김해숙</dd>
           <dt data-rise>원작</dt><dd data-rise>도널드 E. 웨스트레이크의 소설 《The Ax》</dd>
           <dt data-rise>무대</dt><dd data-rise>제30회 부산국제영화제 개막작</dd>
         </dl>
-        <div class="shot" data-rise><img src="assets/poster.jpg" alt="포스터" style="max-height:62vh"/></div>
+        <figure class="poster-figure" data-rise><img src="assets/poster.jpg" alt="어쩔 수가 없다 포스터" /></figure>
       </div>
     </div>
   </section>
