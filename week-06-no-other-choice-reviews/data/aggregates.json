@@ -1,0 +1,26 @@
+{
+  "title": "어쩔 수가 없다 (No Other Choice, Watcha Pedia mW9pLVe)",
+  "total": 15824,
+  "rated": 15750,
+  "unrated": 74,
+  "avg_rating": 3.525,
+  "median_rating": 3.5,
+  "stdev": 0.829,
+  "positive": 11181,
+  "neutral": 3388,
+  "negative": 1181,
+  "spoilers": 907,
+  "likes_total": 42818,
+  "rating_dist": {
+    "0.5": 192,
+    "1": 175,
+    "1.5": 225,
+    "2": 589,
+    "2.5": 1010,
+    "3": 2378,
+    "3.5": 4130,
+    "4": 4791,
+    "4.5": 1684,
+    "5": 576
+  }
+}
