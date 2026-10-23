@@ -22,16 +22,16 @@ ARGV = [a for a in sys.argv if a != "--light"]
 LIGHT = len(ARGV) != len(sys.argv)
 
 if LIGHT:
-    BG = "#f6f7f9"
-    INK = "#141a24"
-    INK_SOFT = "#414a5a"
-    MUTED = "#77808f"
-    LINE = "#d2d8e2"
-    GOLD = "#c07f14"
-    BLUE = "#4a7fe0"
-    RED = "#d15238"
-    ORANGE = "#d9814a"
-    BAR_GRAY = "#c7d0de"
+    BG = "#f7f2e8"
+    INK = "#1a1815"
+    INK_SOFT = "#4a463f"
+    MUTED = "#7a7266"
+    LINE = "#ded4c2"
+    GOLD = "#b87a12"
+    BLUE = "#2f6bd8"
+    RED = "#c8402a"
+    ORANGE = "#c9773a"
+    BAR_GRAY = "#d8cdb8"
 else:
     BG = "#0d1524"
     INK = "#f2eee4"

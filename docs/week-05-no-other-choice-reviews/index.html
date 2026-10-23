@@ -52,28 +52,28 @@
 
   /* light chrome while a content slide is active */
   .film,.topbar,.bottombar{transition:background .45s ease,color .45s ease,border-color .45s ease}
-  body.light .topbar{color:#6f7887;border-bottom-color:rgba(20,26,36,.13);background:linear-gradient(#f6f7f9 70%,rgba(246,247,249,0))}
+  body.light .topbar{color:#7a7266;border-bottom-color:rgba(26,24,21,.14);background:linear-gradient(#f7f2e8 70%,rgba(247,242,232,0))}
   body.light .topbar .dot{background:#c8402a}
-  body.light .bottombar{color:#6f7887}
-  body.light .counter b{color:#141a24}
-  body.light .hint{color:#6f7887}
-  body.light .film{background:#e9edf3;border-color:rgba(20,26,36,.07)}
-  body.light .film::before{background-image:repeating-linear-gradient(to bottom,rgba(20,26,36,.20) 0 14px,transparent 14px 38px)}
+  body.light .bottombar{color:#7a7266}
+  body.light .counter b{color:#1a1815}
+  body.light .hint{color:#7a7266}
+  body.light .film{background:#efe8da;border-color:rgba(26,24,21,.07)}
+  body.light .film::before{background-image:repeating-linear-gradient(to bottom,rgba(26,24,21,.18) 0 14px,transparent 14px 38px)}
   body.light .progress{background:linear-gradient(90deg,#c08a2f,#c8402a)}
   body.light::before{opacity:.05;mix-blend-mode:multiply}
-  body.light::after{background:radial-gradient(130% 95% at 50% 40%,transparent 70%,rgba(15,23,42,.07) 100%)}
+  body.light::after{background:radial-gradient(130% 95% at 50% 40%,transparent 70%,rgba(60,45,20,.08) 100%)}
 
   .stage{position:absolute;inset:0}
   .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
     padding:70px calc(var(--strip) + 4.5vw) 66px;opacity:0;visibility:hidden;overflow:hidden;transition:opacity .5s ease,visibility .5s}
   .slide.active{opacity:1;visibility:visible}
   /* light slides (2–16) — cover keeps the dark poster */
-  .slide:not(.poster-bg){background:#f6f7f9;color:var(--ink);
-    --ink:#141a24; --ink-soft:#3d4655; --muted:#6f7887; --line:rgba(20,26,36,.13);
-    --panel:#ffffff; --panel-2:#eef1f6;
+  .slide:not(.poster-bg){background:#f7f2e8;color:var(--ink);
+    --ink:#1a1815; --ink-soft:#4a463f; --muted:#7a7266; --line:rgba(26,24,21,.14);
+    --panel:#fffefa; --panel-2:#f8f1e3;
     --accent:#a8690c; --accent-solid:#e8b04b;
     --blue:#2f6bd8; --red:#c8402a;}
-  .slide:not(.poster-bg) .pcard{box-shadow:0 1px 2px rgba(16,24,40,.06)}
+  .slide:not(.poster-bg) .pcard{box-shadow:0 1px 2px rgba(74,58,30,.07)}
   .wrap{max-width:1360px;width:100%;margin:0 auto}
   [data-rise]{opacity:0;transform:translateY(24px)}
 
