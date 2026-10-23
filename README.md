@@ -9,7 +9,7 @@
 | week-03-titanic | 타이타닉 생존 분석 + 예측 모델 | [`week-03-titanic/`](week-03-titanic/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-03-titanic/) |
 | week-03-pima-indians-diabetes | 피마 인디언 당뇨 예측 | [`week-03-pima-indians-diabetes/`](week-03-pima-indians-diabetes/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-03-pima-indians-diabetes/) |
 | week-05-no-other-choice-reviews | 〈어쩔 수가 없다〉 왓챠피디아 리뷰 15,824건 분석 | [`week-05-no-other-choice-reviews/`](week-05-no-other-choice-reviews/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-05-no-other-choice-reviews/) |
-| week-06-no-other-choice-reviews | week-05 리뷰 분석 덱의 06주차 배포본 (밝은 테마, WEEK 06 표기) | [`week-06-no-other-choice-reviews/`](week-06-no-other-choice-reviews/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-06-no-other-choice-reviews/) |
+| week-06-no-other-choice-reviews | week-05 리뷰 분석 덱의 6주차 배포본 | [`week-06-no-other-choice-reviews/`](week-06-no-other-choice-reviews/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-06-no-other-choice-reviews/) |
 
 ## 폴더 구조
 
