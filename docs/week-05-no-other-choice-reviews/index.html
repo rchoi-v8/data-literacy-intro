@@ -25,7 +25,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
-  body{font-family:var(--sans);color:var(--ink);background:var(--film);overflow:hidden;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--sans);color:var(--ink);background:var(--film);overflow:hidden;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
 
   /* film grain */
   body::before{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.16;mix-blend-mode:screen;
@@ -86,7 +86,7 @@
   .chip{display:inline-flex;align-items:center;gap:9px;background:var(--accent-solid);color:#0d1524;font-family:var(--display);
     font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;padding:9px 18px;border-radius:999px}
   .chip .reel{width:16px;height:16px}
-  .sub{font-family:var(--sans);font-weight:400;font-size:clamp(19px,1.85vw,25px);line-height:1.5;color:var(--ink-soft)}
+  .sub{font-family:var(--sans);font-weight:400;font-size:clamp(20px,1.9vw,27px);line-height:1.5;color:var(--ink-soft)}
   .sub b{color:var(--ink);font-weight:700}
 
   .sprocket{height:14px;margin:22px 0;background-image:repeating-linear-gradient(to right,var(--line) 0 11px,transparent 11px 24px);
@@ -110,7 +110,7 @@
     font-family:var(--display);font-weight:800;font-size:15px;position:relative;z-index:1}
   .idxcol .lbl{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.05em;color:var(--accent);margin:20px 0 9px;text-transform:uppercase}
   .idxcol h3{font-family:var(--display);font-weight:700;font-size:26px;margin-bottom:10px}
-  .idxcol p{font-size:17px;line-height:1.55;color:var(--ink-soft)}
+  .idxcol p{font-size:19px;line-height:1.55;color:var(--ink-soft)}
 
   /* cards */
   .grid{display:grid;gap:22px}
@@ -118,14 +118,14 @@
   .pcard{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:9px;padding:26px 26px}
   .pcard.pos{border-top-color:var(--blue)} .pcard.neg{border-top-color:var(--red)}
   .pcard .tag{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .pcard h3{font-size:22px;font-weight:700;margin:10px 0 10px}
-  .pcard p{font-size:17.5px;line-height:1.6;color:var(--ink-soft)}
+  .pcard h3{font-size:24px;font-weight:700;margin:10px 0 10px}
+  .pcard p{font-size:20px;line-height:1.55;color:var(--ink-soft)}
 
   /* stats (big) */
   .stats{display:flex;gap:min(7vw,110px);flex-wrap:wrap;align-items:flex-end}
   .stat .v{font-family:var(--display);font-weight:900;font-size:clamp(54px,7.4vw,124px);line-height:.84;letter-spacing:-.03em}
   .stat .v small{font-size:.32em;color:var(--muted);margin-left:6px}
-  .stat .l{font-family:var(--mono);font-size:14px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+  .stat .l{font-family:var(--mono);font-size:15px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:12px}
   .stat.a .v{color:var(--accent)} .stat.p .v{color:var(--blue)} .stat.n .v{color:var(--red)}
 
   /* vertical stats (slide 7): one per line */
@@ -134,35 +134,36 @@
   .vstat.p{border-color:var(--blue)} .vstat.m{border-color:var(--accent)} .vstat.n{border-color:var(--red)}
   .vstat .n{font-family:var(--display);font-weight:900;font-size:clamp(40px,4.6vw,72px);line-height:.9;min-width:3.2em}
   .vstat.p .n{color:var(--blue)} .vstat.m .n{color:var(--accent)} .vstat.n .n{color:var(--red)}
-  .vstat .t{font-size:19px;color:var(--ink-soft)}
+  .vstat .t{font-size:21px;color:var(--ink-soft)}
 
   /* transparent media (no white box) */
   .shot{position:relative}
   .shot img{display:block;width:auto;max-width:100%;max-height:60vh;height:auto;margin:0 auto}
+  .figcap{margin-top:10px;text-align:center;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--muted)}
   .poster-figure{margin:0;justify-self:end;align-self:center}
   .poster-figure img{display:block;height:min(70vh,660px);width:auto;border-radius:5px;
     box-shadow:0 24px 48px -20px rgba(60,42,14,.42),0 2px 8px rgba(60,42,14,.10)}
   .split{display:grid;grid-template-columns:.92fr 1.08fr;gap:4vw;align-items:center}
   .split.rev{grid-template-columns:1.08fr .92fr}
 
-  .kv{display:grid;grid-template-columns:180px 1fr;gap:13px 28px;font-size:20px;max-width:1020px}
-  .kv dt{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:13px 28px;font-size:22px;max-width:1020px}
+  .kv dt{font-family:var(--mono);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:4px}
   .kv dd{color:var(--ink-soft)} .kv dd b{color:var(--ink)}
 
-  ul.clean{list-style:none;font-size:20px;line-height:1.66;color:var(--ink-soft)}
+  ul.clean{list-style:none;font-size:23px;line-height:1.62;color:var(--ink-soft)}
   ul.clean li{position:relative;padding-left:26px;margin-bottom:13px}
   ul.clean li::before{content:"\25B8";position:absolute;left:0;color:var(--accent)}
   ul.clean b{color:var(--ink)}
 
   .statement{background:linear-gradient(90deg,var(--accent-solid),#c98a2f);color:#0d1524;padding:26px 30px;border-radius:9px;
-    font-family:var(--display);font-weight:700;font-size:clamp(19px,1.9vw,25px);line-height:1.4}
+    font-family:var(--display);font-weight:700;font-size:clamp(20px,2vw,27px);line-height:1.4}
 
   .quote{border-left:4px solid var(--accent);padding:6px 0 6px 20px;margin-bottom:20px}
   .quote.pos{border-color:var(--blue)} .quote.neg{border-color:var(--red)}
-  .quote p{font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:var(--ink)}
-  .quote .who{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;color:var(--muted);margin-top:8px}
+  .quote p{font-size:clamp(18px,1.55vw,23px);line-height:1.5;color:var(--ink)}
+  .quote .who{font-family:var(--mono);font-size:13.5px;letter-spacing:.05em;color:var(--muted);margin-top:8px}
 
-  table.debate{width:100%;border-collapse:collapse;font-size:18px}
+  table.debate{width:100%;border-collapse:collapse;font-size:20px}
   table.debate th,table.debate td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
   table.debate th{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   table.debate td.pro{color:var(--blue)} table.debate td.con{color:var(--red)}
@@ -322,7 +323,7 @@
           </ul>
           <p class="sub" style="margin-top:20px">키워드의 평균 별점이<br>곧 만족도의 분기점입니다.</p>
         </div>
-        <div class="shot" data-rise><img src="assets/keyword_sentiment.png" alt="키워드 분석"/></div>
+        <div class="shot" data-rise><img src="assets/keyword_sentiment.png" alt="키워드 분석"/><p class="figcap">파랑 = 평균 3.6 이상 · 골드 = 3.45–3.6 · 빨강 = 3.45 미만</p></div>
       </div>
     </div>
   </section>
