@@ -31,10 +31,12 @@
   @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   .lead{margin-top:30px;max-width:640px;font-size:clamp(15px,1.5vw,19px);font-weight:300;line-height:1.65;color:var(--ink-soft);opacity:0;animation:up .9s .55s forwards}
   .rule{height:1px;background:var(--line);margin:56px 0 40px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:34px 40px}
   a.card{display:block;text-decoration:none;color:inherit;border-top:2px solid var(--ink);padding-top:20px;opacity:0;animation:up .9s forwards;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
   a.card:nth-child(1){animation-delay:.7s}
   a.card:nth-child(2){animation-delay:.85s}
+  a.card:nth-child(3){animation-delay:1s}
+  a.card:nth-child(4){animation-delay:1.15s}
   a.card:hover{transform:translateY(-6px)}
   a.card:hover .go{color:var(--accent);letter-spacing:.22em}
   .idx{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
@@ -90,11 +92,19 @@
         <div class="tags">N=15,824 · 코멘트 · 평균 3.53 / 5.0</div>
         <span class="go">발표 자료 보기 →</span>
       </a>
+
+      <a class="card" href="week-06-no-other-choice-reviews/">
+        <div class="idx">Week 06 · Project 03</div>
+        <h2>어쩔 수가 없다 — 15,824개의 목소리</h2>
+        <p>week-05 리뷰 분석 덱의 06주차 배포본. 밝은 페이지 테마와 WEEK 06 표기로 다시 정리한 16장.</p>
+        <div class="tags">N=15,824 · 코멘트 · Week 06</div>
+        <span class="go">발표 자료 보기 →</span>
+      </a>
     </div>
   </main>
 
   <footer>
-    Source · <a href="https://github.com/rchoi-v8/intro-to-data-literacy">github.com/rchoi-v8/intro-to-data-literacy</a>
+    Source · <a href="https://github.com/rchoi-v8/data-literacy-intro">github.com/rchoi-v8/data-literacy-intro</a>
   </footer>
 </body>
 </html>
