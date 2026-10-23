@@ -1,4 +1,4 @@
-# intro-to-data-literacy
+# data-literacy-intro
 
 데이터 분석 입문 과목의 프로젝트 모음입니다. 프로젝트별로 폴더를 나눠 관리합니다.
 
@@ -6,14 +6,15 @@
 
 | 주차 · 프로젝트 | 주제 | 폴더 | 발표 자료 |
 |---|---|---|---|
-| week-03-titanic | 타이타닉 생존 분석 + 예측 모델 | [`week-03-titanic/`](week-03-titanic/) | [deck](https://rchoi-v8.github.io/intro-to-data-literacy/week-03-titanic/) |
-| week-03-pima-indians-diabetes | 피마 인디언 당뇨 예측 | [`week-03-pima-indians-diabetes/`](week-03-pima-indians-diabetes/) | [deck](https://rchoi-v8.github.io/intro-to-data-literacy/week-03-pima-indians-diabetes/) |
+| week-03-titanic | 타이타닉 생존 분석 + 예측 모델 | [`week-03-titanic/`](week-03-titanic/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-03-titanic/) |
+| week-03-pima-indians-diabetes | 피마 인디언 당뇨 예측 | [`week-03-pima-indians-diabetes/`](week-03-pima-indians-diabetes/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-03-pima-indians-diabetes/) |
 | week-05-no-other-choice-reviews | 〈어쩔 수가 없다〉 왓챠피디아 리뷰 15,824건 분석 | [`week-05-no-other-choice-reviews/`](week-05-no-other-choice-reviews/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-05-no-other-choice-reviews/) |
+| week-06-no-other-choice-reviews | week-05 리뷰 분석 덱의 06주차 배포본 (밝은 테마, WEEK 06 표기) | [`week-06-no-other-choice-reviews/`](week-06-no-other-choice-reviews/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-06-no-other-choice-reviews/) |
 
 ## 폴더 구조
 
 ```
-intro-to-data-literacy/
+data-literacy-intro/
 ├─ week-03-titanic/          # 타이타닉 프로젝트
 │  ├─ notebooks/             # 분석·모델 노트북
 │  ├─ reports/               # 생성된 그래프 이미지
@@ -33,17 +34,27 @@ intro-to-data-literacy/
 │  ├─ reports/               # 생성된 차트 이미지 5종
 │  ├─ REPORT.md
 │  └─ README.md
+├─ week-06-no-other-choice-reviews/   # 같은 분석의 06주차 배포본
+│  ├─ make_charts.py
+│  ├─ data/
+│  ├─ reports/
+│  ├─ REPORT.md
+│  └─ README.md
 └─ docs/                     # GitHub Pages 사이트 소스
    ├─ index.html             # 프로젝트 목차 (랜딩)
    ├─ week-03-titanic/       # 타이타닉 발표 덱
    ├─ week-03-pima-indians-diabetes/  # 당뇨 발표 덱
-   └─ week-05-no-other-choice-reviews/ # 〈어쩔 수가 없다〉 발표 덱
+   ├─ week-05-no-other-choice-reviews/ # 〈어쩔 수가 없다〉 발표 덱
+   └─ week-06-no-other-choice-reviews/ # 06주차 발표 덱
 ```
 
 ## 발표 사이트 (GitHub Pages)
 
-- 랜딩: <https://rchoi-v8.github.io/intro-to-data-literacy/>
-- 타이타닉 덱: <https://rchoi-v8.github.io/intro-to-data-literacy/week-03-titanic/>
+- 랜딩: <https://rchoi-v8.github.io/data-literacy-intro/>
+- 타이타닉 덱: <https://rchoi-v8.github.io/data-literacy-intro/week-03-titanic/>
+- 피마 당뇨 덱: <https://rchoi-v8.github.io/data-literacy-intro/week-03-pima-indians-diabetes/>
+- 리뷰 분석 덱 (week-05): <https://rchoi-v8.github.io/data-literacy-intro/week-05-no-other-choice-reviews/>
+- 리뷰 분석 덱 (week-06): <https://rchoi-v8.github.io/data-literacy-intro/week-06-no-other-choice-reviews/>
 
 사이트 소스는 `docs/` 폴더이며, Pages는 `master:/docs` 로 배포됩니다.
 
