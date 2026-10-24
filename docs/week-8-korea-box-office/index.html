@@ -23,7 +23,9 @@
 <main class="stage" id="stage">
 
   <!-- 01 -->
-  <section class="slide cover active" data-slide data-chapter="01 · 질문">
+  <section class="slide cover on-red active" data-slide data-chapter="01 · 질문">
+    <span class="sprocket top" aria-hidden="true"></span>
+    <span class="sprocket bottom" aria-hidden="true"></span>
     <div class="wrap">
       <div class="kicker" data-rise style="--d:0">2025 한국 실사 장편 · 분석 계획</div>
       <h1 data-rise style="--d:1">같은 주에 개봉했는데,<br />왜 한 편만 기억될까</h1>
@@ -64,7 +66,7 @@
             <div class="cap">관찰 창</div>
             <div class="bar"><div class="pre"></div><div class="main"></div></div>
             <div class="axis"><span>D0 개봉</span><span>D27</span></div>
-            <p class="note" style="margin-top:4px">▧ 개봉 전 시사회는 지표에서 제외 · ▧ 구간은 개봉일을 포함한 28일</p>
+            <p class="note" style="margin-top:4px">개봉 전 시사회는 지표에서 제외하고, 구간은 개봉일을 포함한 28일입니다.</p>
           </div>
         </div>
       </div>
@@ -212,7 +214,7 @@
           </div>
         </div>
         <div data-rise style="--d:3">
-          <div class="pair off">
+          <div class="pair off ticket">
             <span class="tag">확인 예정</span>
             <h3>분석 대상 목록 · 순제작비</h3>
             <p>영진위 2025년 한국영화 실질개봉작 부록을 목록의 출발점으로 씁니다. 이 명부는 형식개봉작까지 포함한 전체 목록은 아닙니다.</p>
@@ -281,7 +283,8 @@
   </section>
 
   <!-- 13 -->
-  <section class="slide" data-slide data-chapter="13 · 한계">
+  <section class="slide on-red" data-slide data-chapter="13 · 한계">
+    <span class="sprocket bottom" aria-hidden="true"></span>
     <div class="wrap">
       <div class="kicker" data-rise>한계와 일정</div>
       <h2 data-rise style="--d:1">말할 수 있는 것과<br /><em>없는 것</em></h2>
@@ -335,6 +338,7 @@
     progress.style.width = total > 1 ? (idx / (total - 1) * 100) + '%' : '100%';
     counter.innerHTML = '<b>' + pad(idx + 1) + '</b> / ' + pad(total);
     chapter.textContent = slides[idx].dataset.chapter || '';
+    document.body.classList.toggle('theme-red', slides[idx].classList.contains('on-red'));
   }
 
   function go(n) {
