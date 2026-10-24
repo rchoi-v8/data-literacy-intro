@@ -10,6 +10,7 @@
 | week-03-pima-indians-diabetes | 피마 인디언 당뇨 예측 | [`week-03-pima-indians-diabetes/`](week-03-pima-indians-diabetes/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-03-pima-indians-diabetes/) |
 | week-05-no-other-choice-reviews | 〈어쩔 수가 없다〉 왓챠피디아 리뷰 15,824건 분석 | [`week-05-no-other-choice-reviews/`](week-05-no-other-choice-reviews/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-05-no-other-choice-reviews/) |
 | week-06-no-other-choice-reviews | week-05 리뷰 분석 덱의 6주차 배포본 | [`week-06-no-other-choice-reviews/`](week-06-no-other-choice-reviews/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-06-no-other-choice-reviews/) |
+| week-8-korea-box-office | 2025 한국 실사 장편 흥행 요인 분석 계획 | [`week-8-korea-box-office/`](week-8-korea-box-office/) | [deck](https://rchoi-v8.github.io/data-literacy-intro/week-8-korea-box-office/) |
 
 ## 폴더 구조
 
@@ -40,12 +41,15 @@ data-literacy-intro/
 │  ├─ reports/
 │  ├─ REPORT.md
 │  └─ README.md
+├─ week-8-korea-box-office/   # 2025 한국 실사 장편 흥행 요인 분석 계획
+│  └─ README.md              # 지표·범위·과거 실적 규칙·결측·출처 상태
 └─ docs/                     # GitHub Pages 사이트 소스
    ├─ index.html             # 프로젝트 목차 (랜딩)
    ├─ week-03-titanic/       # 타이타닉 발표 덱
    ├─ week-03-pima-indians-diabetes/  # 당뇨 발표 덱
    ├─ week-05-no-other-choice-reviews/ # 〈어쩔 수가 없다〉 발표 덱
-   └─ week-06-no-other-choice-reviews/ # 6주차 발표 덱
+   ├─ week-06-no-other-choice-reviews/ # 6주차 발표 덱
+   └─ week-8-korea-box-office/ # 박스오피스 분석 계획 발표 덱
 ```
 
 ## 발표 사이트 (GitHub Pages)
@@ -55,6 +59,7 @@ data-literacy-intro/
 - 피마 당뇨 덱: <https://rchoi-v8.github.io/data-literacy-intro/week-03-pima-indians-diabetes/>
 - 리뷰 분석 덱 (week-05): <https://rchoi-v8.github.io/data-literacy-intro/week-05-no-other-choice-reviews/>
 - 리뷰 분석 덱 (week-06): <https://rchoi-v8.github.io/data-literacy-intro/week-06-no-other-choice-reviews/>
+- 박스오피스 분석 계획 덱 (week-08): <https://rchoi-v8.github.io/data-literacy-intro/week-8-korea-box-office/>
 
 사이트 소스는 `docs/` 폴더이며, Pages는 `master:/docs` 로 배포됩니다.
 
