@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Korean Box Office Factors — 분석 계획</title>
-<meta name="description" content="2025년 국내 개봉 한국 실사 장편의 흥행 관련 요인을 탐색하는 분석 계획 발표 덱" />
+<title>한국 영화 흥행 분석 계획 — 2025 실사 장편</title>
+<meta name="description" content="2025년 한국 실사 장편의 28일 관객 수와 작품·개봉 조건·과거 실적의 관계를 확인하는 분석 계획 발표 덱" />
 <link rel="icon" href="assets/mark.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,313 +15,384 @@
 
 <div class="progress" id="progress"></div>
 
-<div class="chrome top">
+<header class="chrome top">
   <span class="brand"><i></i>Korean Box Office Factors</span>
-  <span id="chapter">01 · 질문</span>
-</div>
+  <nav class="sections" id="sections" aria-label="발표 구간">
+    <span data-sec="설계">설계</span>
+    <span data-sec="수집·측정">수집·측정</span>
+    <span data-sec="분석">분석</span>
+  </nav>
+</header>
 
 <main class="stage" id="stage">
 
   <!-- 01 -->
-  <section class="slide cover on-red active" data-slide data-chapter="01 · 질문">
-    <span class="sprocket top" aria-hidden="true"></span>
-    <span class="sprocket bottom" aria-hidden="true"></span>
+  <section class="slide cover active" data-slide data-section="설계">
+    <span class="curtain" aria-hidden="true"></span>
     <div class="wrap">
-      <div class="kicker" data-rise style="--d:0">2025 한국 실사 장편 · 분석 계획</div>
-      <h1 data-rise style="--d:1">같은 주에 개봉했는데,<br />왜 한 편만 기억될까</h1>
-      <p class="sub" data-rise style="--d:2">배우가 유명해서일까요, 등급이 낮아서일까요, 아니면 개봉관이 많아서일까요.<br />답을 미리 정하지 않고, 무엇이 얼마나 관련되는지 확인할 계획을 세웁니다.</p>
+      <div class="kicker" data-rise>분석 계획 · 데이터리터러시의이해</div>
+      <h1 data-rise style="--d:1">한국 영화 흥행,<br />무엇과 관련 있을까?</h1>
+      <p class="sub" data-rise style="--d:2">2025년 국내에서 개봉한 한국 실사 장편을 대상으로, 28일 관객 수와 함께 움직이는 요인을 확인하는 계획입니다.<br />개봉일부터 28일(D0–D27)까지의 국내 관객 수를 흥행 지표로 씁니다.</p>
       <div class="meta" data-rise style="--d:3">
         <span>과목 <b>데이터리터러시의이해</b></span>
         <span>발표 <b>분석 계획</b></span>
-        <span>지표 <b>개봉일 포함 28일(D0~D27)</b></span>
+        <span>지표 <b>개봉일 포함 28일 관객 수</b></span>
       </div>
     </div>
+    <aside class="notes">
+      <div><b>이 장의 역할</b> — 결과를 말하는 발표가 아니라, 무엇을 어떻게 잴지 정하는 계획 발표입니다.</div>
+      <div><b>구간 안내</b> — 이 덱은 설계(1–4) · 수집·측정(5–7) · 분석(8–10) 순서로 진행합니다. 상단 표시로 현재 구간이 바뀝니다.</div>
+      <div><b>시간</b> — 10분 발표, 장당 40초~1분을 기준으로 잡았습니다.</div>
+    </aside>
   </section>
 
   <!-- 02 -->
-  <section class="slide" data-slide data-chapter="02 · 문제">
+  <section class="slide" data-slide data-section="설계">
     <div class="wrap">
-      <div class="kicker" data-rise>문제</div>
-      <h2 data-rise style="--d:1">흥행 이야기는 많은데,<br /><em>크기 비교</em>는 드물다</h2>
-      <p class="lead" data-rise style="--d:2">배우, 장르, 개봉관, 시기. 요인은 자주 나열됩니다. 하지만 그 요인들이 <b>어느 방향으로, 얼마나</b> 함께 움직였는지를 같은 잣대로 비교한 자료는 드뭅니다.</p>
-      <ul class="list" style="margin-top:clamp(22px,3.4vh,36px)">
-        <li data-rise style="--d:3">이번 발표는 답을 미리 정하지 않고, <b>방향과 크기를 재는 방법</b>을 정합니다.</li>
-        <li data-rise style="--d:4">인과를 입증하는 연구가 아니라, 관측 자료에서 <b>연관</b>까지만 다룹니다.</li>
-      </ul>
+      <div class="kicker" data-rise>연구 질문</div>
+      <h2 data-rise style="--d:1">이번 분석에서 확인할 질문</h2>
+      <div class="question" data-rise style="--d:2">
+        작품의 특성과 개봉 조건, 배우·감독의 과거 실적은 개봉 후 28일 관객 수와 <em>어떤 관계</em>가 있는가?
+      </div>
+      <div class="subq">
+        <div data-rise style="--d:3">
+          <span>작품 특성</span>
+          <p>장르·관람등급·상영시간이 다른 작품보다 더 많이 관람되었는가</p>
+        </div>
+        <div data-rise style="--d:4">
+          <span>개봉 조건</span>
+          <p>첫날 스크린 수와 개봉 시기, 배급사에 따라 차이가 있는가</p>
+        </div>
+        <div data-rise style="--d:5">
+          <span>사람</span>
+          <p>배우진과 감독의 이전 작품 성적이 이번 작품과 이어지는가</p>
+        </div>
+      </div>
+      <div class="pipeline" data-rise style="--d:6">
+        <span class="st now">분석 질문</span><span class="arrow">→</span>
+        <span class="st">대상과 지표</span><span class="arrow">→</span>
+        <span class="st">자료와 측정</span><span class="arrow">→</span>
+        <span class="st">분석 방법</span>
+      </div>
     </div>
+    <aside class="notes">
+      <div><b>질문을 하나로 묶은 이유</b> — 요인별로 따로 묻지 않고 같은 지표(28일 관객 수)에 놓고 비교합니다. 그래야 방향과 크기를 같은 잣대로 볼 수 있습니다.</div>
+      <div><b>피한 표현</b> — "기존 연구가 부족하다" 같은 근거 없는 주장은 넣지 않았습니다. 이번 분석의 목표만 적었습니다.</div>
+      <div><b>답의 범위</b> — 관계의 방향과 크기까지입니다. 인과는 다루지 않습니다.</div>
+    </aside>
   </section>
 
   <!-- 03 -->
-  <section class="slide" data-slide data-chapter="03 · 지표">
+  <section class="slide" data-slide data-section="설계">
     <div class="wrap">
-      <div class="kicker" data-rise>흥행 지표</div>
-      <h2 data-rise style="--d:1">흥행은 <em>개봉 후 28일</em>로 잰다</h2>
-      <div class="cols" style="margin-top:clamp(10px,2vh,24px)">
-        <div data-rise style="--d:2">
-          <div class="big">D0–D27</div>
-          <p class="lead" style="margin-top:18px">국내 관객 수, 영화 1편 단위.</p>
-        </div>
+      <div class="kicker" data-rise>대상과 지표</div>
+      <h2 data-rise style="--d:1">2025년 개봉작의 <em>첫 28일</em>을 비교한다</h2>
+      <div class="twocol">
+        <table class="tbl" data-rise style="--d:2">
+          <tbody>
+            <tr><td>대상</td><td>2025년 국내 최초 극장 개봉 한국 실사 장편 (독립·예술영화 포함)</td></tr>
+            <tr><td>제외</td><td>애니메이션 · 다큐멘터리 · 공연 실황 · 시리즈 · 확장판 · 재개봉</td></tr>
+            <tr><td>관측 단위</td><td>영화 1편</td></tr>
+            <tr><td>흥행 지표</td><td>개봉일을 포함한 28일(D0–D27) 국내 관객 수 · 개봉 전 시사회 제외</td></tr>
+            <tr><td>연도 판정</td><td>제작연도가 아니라 국내 최초 극장 개봉일</td></tr>
+          </tbody>
+        </table>
         <div data-rise style="--d:3">
-          <div class="window">
-            <div class="cap">관찰 창</div>
-            <div class="bar"><div class="pre"></div><div class="main"></div></div>
-            <div class="axis"><span>D0 개봉</span><span>D27</span></div>
-            <p class="note" style="margin-top:4px">개봉 전 시사회는 지표에서 제외하고, 구간은 개봉일을 포함한 28일입니다.</p>
+          <h3 style="margin-bottom:10px">28일로 자르는 이유</h3>
+          <p class="lead" style="font-size:clamp(13.5px,1.2vw,16px)">작품마다 상영 기간이 달라 전체 관객 수는 비교 기준이 되기 어렵습니다. 개봉일부터 같은 28일을 잘라 비교합니다.</p>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+            <span style="font-size:11px;font-weight:700;color:var(--muted)">D0</span>
+            <span style="flex:1;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--red),rgba(140,29,24,.25))"></span>
+            <span style="font-size:11px;font-weight:700;color:var(--muted)">D27</span>
           </div>
         </div>
       </div>
+      <p class="note" data-rise style="--d:4;margin-top:clamp(16px,2.6vh,26px)">필요하면 이전 개봉연도로 확장할 수 있습니다. 자료 확보율과 분석에 필요한 작품 수를 먼저 검토하며, 확장해도 선정·측정 기준은 동일하게 적용하고 연도별 차이는 따로 봅니다.</p>
     </div>
+    <aside class="notes">
+      <div><b>선정 기준이 중요한 이유</b> — 애니메이션·다큐멘터리·재개봉은 관객 규모와 유통 방식이 달라 같은 잣대로 비교하기 어렵습니다. 예외는 본문에 모두 적어 두었습니다.</div>
+      <div><b>연도 확장</b> — 지금 단계에서는 2025년으로 시작합니다. 확장 여부는 목록을 확정한 뒤 자료 확보율과 작품 수를 보고 결정합니다.</div>
+      <div><b>주의</b> — 확장은 "분석 대상 연도를 넓히는 일"이고, 과거 실적을 위해 이전 작품을 조회하는 것과는 다릅니다.</div>
+    </aside>
   </section>
 
   <!-- 04 -->
-  <section class="slide" data-slide data-chapter="04 · 범위">
+  <section class="slide" data-slide data-section="설계">
     <div class="wrap">
-      <div class="kicker" data-rise>분석 범위 · 잠정 계획</div>
-      <h2 data-rise style="--d:1">2025년을 먼저 본다,<br />필요하면 <em>넓힌다</em></h2>
-      <ul class="list" style="margin-top:clamp(8px,1.6vh,16px)">
-        <li data-rise style="--d:2">우선 대상은 <b>2025년 국내 최초 극장 개봉 한국 실사 장편</b>입니다. 독립·예술영화도 포함합니다.</li>
-        <li data-rise style="--d:3">자료 확보율과 분석에 필요한 작품 수를 검토해 <b>이전 개봉연도로 확장할 수 있습니다.</b></li>
-        <li data-rise style="--d:4">확장해도 <b>선정 기준과 측정 기준은 동일</b>하게 적용하고, <b>연도별 차이</b>를 따로 살펴봅니다.</li>
-      </ul>
-      <p class="note" data-rise style="--d:5;margin-top:clamp(20px,3vh,30px)" > 애니메이션 · 다큐멘터리 · 공연 실황 · 시리즈 · 확장판 · 재개봉은 어느 연도에서든 제외합니다. 연도는 제작연도가 아니라 국내 최초 극장 개봉일로 판정합니다.</p>
+      <div class="kicker" data-rise>비교할 요인</div>
+      <h2 data-rise style="--d:1">작품·개봉 조건·과거 실적을 비교한다</h2>
+      <div class="threecol" data-rise style="--d:2">
+        <div>
+          <div class="kicker" style="margin-bottom:10px;letter-spacing:.1em">작품 특성</div>
+          <h3>장르 · 관람등급 · 상영시간</h3>
+          <p class="lead" style="font-size:clamp(13px,1.15vw,15px)">관객층이 어떻게 형성되는지, 상영시간이 회전에 어떤 영향을 주는지 봅니다.</p>
+        </div>
+        <div>
+          <div class="kicker" style="margin-bottom:10px;letter-spacing:.1em">개봉 조건</div>
+          <h3>첫날 스크린 수 · 개봉 시기 · 배급사</h3>
+          <p class="lead" style="font-size:clamp(13px,1.15vw,15px)">개봉 당일 노출량과 시장 상황, 배급 규모를 나타내는 값입니다.</p>
+        </div>
+        <div>
+          <div class="kicker" style="margin-bottom:10px;letter-spacing:.1em">사람</div>
+          <h3>주연 배우진 · 감독의 과거 실적</h3>
+          <p class="lead" style="font-size:clamp(13px,1.15vw,15px)">이 작품 전에 개봉해 28일 관찰이 끝난 작품의 관객 수로 계산합니다.</p>
+        </div>
+      </div>
+      <div class="case" data-rise style="--d:3;margin-top:clamp(18px,3vh,28px)" >
+        <span class="tag">자료 확보 시 보조 분석</span>
+        <p><b style="color:var(--ink)">순제작비</b> — 공개된 작품이 많지 않아 본 분석의 필수 요인으로 두지 않습니다. 기사·인터뷰 원문에서 확인되는 작품만 별도로 표시해 참고합니다.</p>
+      </div>
+      <p class="note" data-rise style="--d:4;margin-top:clamp(12px,2vh,18px)">세 요인은 서로 얽혀 있을 수 있습니다. 실적이 좋은 배우의 작품이 더 큰 규모로 개봉하는 경우가 대표적이며, 9장에서 이 점을 따로 확인합니다.</p>
     </div>
+    <aside class="notes">
+      <div><b>경쟁 밀도는 왜 뺐나</b> — 정의와 측정 방법(동시 개봉작 수, 스크린 점유 등)이 아직 정해지지 않아 이번 계획의 본문에서 제외했습니다.</div>
+      <div><b>순제작비</b> — 공개 자료가 일부 작품에만 있어, 확보된 작품만 보조적으로 표시하는 방식을 씁니다. 결측이 많으면 요인에서 빼고 한계에 적습니다.</div>
+    </aside>
   </section>
 
   <!-- 05 -->
-  <section class="slide" data-slide data-chapter="05 · 구분">
+  <section class="slide" data-slide data-section="수집·측정">
     <div class="wrap">
-      <div class="kicker" data-rise>헷갈리기 쉬운 두 가지</div>
-      <h2 data-rise style="--d:1">과거작 조회와<br /><em>분석 연도 확장</em>은 다른 일이다</h2>
-      <div class="split">
-        <div class="panel" data-rise style="--d:2">
-          <h4>과거 실적을 위해 조회</h4>
-          <ul>
-            <li>대상작보다 앞선 작품의 관객 수를 계산</li>
-            <li>그 작품은 <b>분석 대상이 아님</b></li>
-            <li>표본 크기는 늘지 않음</li>
-          </ul>
+      <div class="kicker" data-rise>과거 실적 계산</div>
+      <h2 data-rise style="--d:1">배우·감독 실적은<br />최근 최대 3편으로 계산한다</h2>
+      <p class="lead" data-rise style="--d:2">한 편의 큰 흥행작이 지표 전체를 끌고 가지 않도록, 평균 대신 <b>중앙값(가운데 값)</b>을 씁니다.</p>
+      <div class="flow" data-rise style="--d:3">
+        <div class="step">
+          <span class="no">01</span>
+          <div class="body">
+            <h4>적격 과거작 최대 3편</h4>
+            <p>이 작품 전에 개봉해 28일 관찰이 끝난 작품 중, 개봉일 기준 최근 3편</p>
+          </div>
         </div>
-        <div class="panel on" data-rise style="--d:3">
-          <h4>분석 대상 연도 확장</h4>
-          <ul>
-            <li>관측 단위가 되는 작품이 늘어남</li>
-            <li>선정·측정 기준은 <b>동일하게</b> 적용</li>
-            <li>연도별 차이를 따로 확인</li>
-          </ul>
+        <div class="to" aria-hidden="true">→</div>
+        <div class="step">
+          <span class="no">02</span>
+          <div class="body">
+            <h4>인물별 중앙값</h4>
+            <p>각 작품의 28일 관객 수를 모아 그 사람의 중앙값을 구합니다</p>
+          </div>
+        </div>
+        <div class="to" aria-hidden="true">→</div>
+        <div class="step">
+          <span class="no">03</span>
+          <div class="body">
+            <h4>배우진 중앙값·최댓값</h4>
+            <p>주연으로 등록된 전원을 각각 계산한 뒤 두 값으로 요약합니다</p>
+          </div>
         </div>
       </div>
-      <p class="note" data-rise style="--d:4;margin-top:clamp(20px,3vh,28px)" >과거작 조회는 실적 변수를 만들기 위한 준비이고, 연도 확장은 표본을 넓히는 결정입니다. 두 가지를 섞어 쓰지 않습니다.</p>
+      <p class="note" data-rise style="--d:4;margin-top:clamp(18px,3vh,28px)">과거작은 실적을 계산하는 데만 쓰고, 분석 대상 작품 수에는 포함하지 않습니다.</p>
     </div>
+    <aside class="notes">
+      <div><b>편수별 규칙</b>
+        <ul>
+          <li>3편 — 3편의 중앙값</li>
+          <li>2편 — 두 값의 평균</li>
+          <li>1편 — 그 값</li>
+          <li>0편 — 결측 (적격 과거작 없음으로 기록)</li>
+        </ul>
+      </div>
+      <div><b>적격의 뜻</b> — 대상작이 개봉할 때 이미 28일 관찰이 끝나 있어야 합니다. 개봉 중이거나 이후에 개봉한 작품은 그 시점에 알 수 없는 값이므로 넣지 않습니다.</div>
+      <div><b>단위</b> — 명 단위 원값을 그대로 씁니다. 로그 변환은 분포 확인 뒤 필요할 때만 검토합니다.</div>
+    </aside>
   </section>
 
   <!-- 06 -->
-  <section class="slide" data-slide data-chapter="06 · 요인">
+  <section class="slide" data-slide data-section="수집·측정">
     <div class="wrap">
-      <div class="kicker" data-rise>후보 요인</div>
-      <h2 data-rise style="--d:1">무엇이 관련될지<br />세 묶음으로 나눈다</h2>
-      <div class="cols" style="margin-top:clamp(6px,1.4vh,14px)">
-        <div data-rise style="--d:2">
-          <div class="pair">
-            <span class="tag">작품 자체</span>
-            <h3>장르 · 관람등급 · 상영시간</h3>
-            <p>관객층 형성 방식이 다르고, 상영시간은 회전율과 연결됩니다.</p>
-          </div>
-          <div class="pair" style="margin-top:clamp(20px,3vh,30px)">
-            <span class="tag">공급과 시장</span>
-            <h3>개봉 첫날 스크린 수 · 개봉 시기 · 배급사</h3>
-            <p>노출량과 시장 조건, 배급 역량의 대리 지표입니다.</p>
-          </div>
+      <div class="kicker" data-rise>자료</div>
+      <h2 data-rise style="--d:1">확보한 자료와 추가로 확인할 자료</h2>
+      <table class="tbl" data-rise style="--d:2">
+        <thead>
+          <tr><th>수집 항목</th><th>출처</th><th>확인 상태</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>작품 정보</td><td>KOBIS 영화 상세 — 장르 · 관람등급 · 상영시간 · 개봉일 · 배급사</td><td class="state ok">확인 완료</td></tr>
+          <tr><td>주연 전원 명단</td><td>KOBIS 영화 상세 · 인물 정보</td><td class="state ok">확인 완료 <span style="color:var(--muted);font-weight:500">(작품 4편)</span></td></tr>
+          <tr><td>28일 일별 관객 수</td><td>KOBIS 영화별 일별 관객 통계</td><td class="state part">일부 확인</td></tr>
+          <tr><td>분석 대상 전체 목록</td><td>영화진흥위원회 한국영화 실질개봉작 부록</td><td class="state wait">확인 예정</td></tr>
+          <tr><td>순제작비</td><td>기사 · 인터뷰 원문</td><td class="state wait">확인 예정 <span style="color:var(--muted);font-weight:500">(보조)</span></td></tr>
+        </tbody>
+      </table>
+      <div class="twocol" style="margin-top:clamp(16px,2.6vh,24px)">
+        <div class="case" data-rise style="--d:3;margin-top:0" >
+          <span class="tag">수집 방법 검증용 · 분석 값 아님</span>
+          <p>박정민의 최근 3편에서 28일 관객 수를 계산해 보았습니다.</p>
+          <div class="calc">밀수 4,779,329 · 하얼빈 4,492,836 · 1승 305,020<br /><s>중앙값</s> → 4,492,836명</div>
         </div>
-        <div data-rise style="--d:3">
-          <div class="pair">
-            <span class="tag">사람</span>
-            <h3>주연 배우진 · 감독의 과거 실적</h3>
-            <p>이 작품 전에 개봉해 28일 관찰이 끝난 작품으로 계산합니다.</p>
-          </div>
-          <div class="pair off" style="margin-top:clamp(20px,3vh,30px)">
-            <span class="tag">돈 · 조건부</span>
-            <h3>순제작비</h3>
-            <p>공개된 작품이 많지 않아, 확보 여부를 확인한 뒤 보조 요인으로만 다룹니다.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 -->
-  <section class="slide" data-slide data-chapter="07 · 측정">
-    <div class="wrap">
-      <div class="kicker" data-rise>측정 방법</div>
-      <h2 data-rise style="--d:1">과거 실적은<br /><em>최근 3편의 가운데 값</em></h2>
-      <div class="dl" style="margin-top:clamp(6px,1.6vh,16px)">
-        <div class="row" data-rise style="--d:2">
-          <dt>대상</dt>
-          <dd>이 작품 전에 개봉해 <b>28일 관찰이 끝난</b> 작품, 개봉일 기준 최근 최대 3편</dd>
-        </div>
-        <div class="row" data-rise style="--d:3">
-          <dt>값</dt>
-          <dd>28일 관객 수의 <b>가운데 값</b>(명). 3편이면 3편의 중앙값, 2편이면 두 값의 평균, 1편이면 그 값, 0편이면 결측</dd>
-        </div>
-        <div class="row" data-rise style="--d:4">
-          <dt>배우</dt>
-          <dd>주연으로 등록된 <b>전원</b>을 각각 계산한 뒤, 다시 <b>가운데 값과 최댓값</b>으로 요약</dd>
-        </div>
-      </div>
-      <p class="note" data-rise style="--d:5;margin-top:clamp(20px,3vh,30px)" >원단위를 그대로 씁니다. 로그 변환은 필수 지표가 아니라, 분포를 확인한 뒤 필요할 때만 검토합니다.</p>
-    </div>
-  </section>
-
-  <!-- 08 -->
-  <section class="slide" data-slide data-chapter="08 · 수집 가능성">
-    <div class="wrap">
-      <div class="kicker" data-rise>수집 가능성</div>
-      <h2 data-rise style="--d:1">방법은 <em>이미 확인</em>했다</h2>
-      <div class="steps" style="margin-top:clamp(8px,1.8vh,18px)">
-        <div class="s" data-rise style="--d:2">
-          <span class="n">01</span>
-          <div class="t"><b>주연 전원 명단 — 확인 완료</b>대상작 4편(파묘 · 장손 · 세계의 주인 · 얼굴)에서 주연으로 등록된 인원을 전원 확보했습니다.</div>
-        </div>
-        <div class="s" data-rise style="--d:3">
-          <span class="n">02</span>
-          <div class="t"><b>과거작 관객 수 — 일부만 확인</b>박정민 · 연상호 두 사람에 한해, 적격 과거작 6편의 28일 관객 수를 계산했습니다.</div>
-        </div>
-        <div class="s" data-rise style="--d:4">
-          <span class="n">03</span>
-          <div class="t"><b>남은 확인</b>2025년 전체 목록(영진위 부록), 순제작비(기사·인터뷰 검색), 경쟁 밀도.</div>
-        </div>
-      </div>
-      <p class="note" data-rise style="--d:5;margin-top:clamp(20px,3vh,30px)" ><b>〈서울역〉은 수집 방법 검증에 사용했지만 애니메이션이므로 적격 과거작에서 제외</b>합니다 — 연상호의 3순위는 〈부산행〉입니다. 확인한 값은 방법 검증용이며 분석에 쓰는 값이 아닙니다.</p>
-    </div>
-  </section>
-
-  <!-- 09 -->
-  <section class="slide" data-slide data-chapter="09 · 출처">
-    <div class="wrap">
-      <div class="kicker" data-rise>출처</div>
-      <h2 data-rise style="--d:1">확인된 출처와<br />앞으로 확인할 출처</h2>
-      <div class="cols" style="margin-top:clamp(6px,1.4vh,14px)">
-        <div data-rise style="--d:2">
-          <div class="pair">
-            <span class="tag">확인 완료 · KOBIS</span>
-            <h3>영화 상세 · 캐스트 · 일별 통계</h3>
-            <p>장르 · 관람등급 · 상영시간 · 개봉일 · 배급사, 주연 전원 명단, 28일 관객 수.</p>
-          </div>
-          <div class="src" style="margin-top:16px">
+        <div data-rise style="--d:4">
+          <p class="note">수집 방법은 <b>일부 작품과 인물에서만 시험</b>한 단계입니다. 전체 목록 기준으로 다시 검증해야 합니다.</p>
+          <p class="note">실질개봉작 부록은 형식개봉작까지 포함한 전체 명부가 아니라, 분석 범위와 명부 범위를 맞추는 확인이 남아 있습니다.</p>
+          <div class="source">
             <a href="https://www.kobis.or.kr/kobis/business/mast/mvie/searchMovieDtl.do?code=20234675" target="_blank" rel="noopener">영화 상세</a>
             <a href="https://www.kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do" target="_blank" rel="noopener">영화 검색</a>
             <a href="https://www.kobis.or.kr/kobis/business/stat/boxs/findDailyBoxOfficeList.do" target="_blank" rel="noopener">일별 박스오피스</a>
             <a href="https://www.kobis.or.kr/kobis/business/mast/peop/searchPeopleList.do" target="_blank" rel="noopener">인물 검색</a>
           </div>
         </div>
-        <div data-rise style="--d:3">
-          <div class="pair off ticket">
-            <span class="tag">확인 예정</span>
-            <h3>분석 대상 목록 · 순제작비</h3>
-            <p>영진위 2025년 한국영화 실질개봉작 부록을 목록의 출발점으로 씁니다. 이 명부는 형식개봉작까지 포함한 전체 목록은 아닙니다.</p>
-            <p>순제작비는 Firecrawl로 기사·인터뷰를 검색하고 원문을 확인해 확보합니다.</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <div><b>시험에 쓴 작품과 대상작은 다릅니다</b> — 주연 명단 확인에 쓴 4편(파묘 · 장손 · 세계의 주인 · 얼굴)은 대상 후보 중 일부이며, 최종 대상 목록과 같지 않을 수 있습니다.</div>
+      <div><b>과거작 계산 시험</b> — 박정민(밀수 · 하얼빈 · 1승)과 연상호(반도 · 염력 · 서울역)의 이전 작품에서 28일 관객 수를 계산했습니다. 〈서울역〉은 애니메이션이라 적격 과거작에서 제외하고, 연상호의 3순위는 〈부산행〉을 씁니다.</div>
+      <div><b>값의 지위</b> — 위 사례는 계산 절차가 작동하는지 확인한 값입니다. 분석 결과로 쓰지 않습니다.</div>
+    </aside>
+  </section>
+
+  <!-- 07 -->
+  <section class="slide" data-slide data-section="수집·측정">
+    <div class="wrap">
+      <div class="kicker" data-rise>결측 처리</div>
+      <h2 data-rise style="--d:1">과거작 없음과 자료 미확보를 구분한다</h2>
+      <div class="states" data-rise style="--d:2">
+        <div class="state-card first">
+          <b>값 있음</b>
+          <p>적격 과거작이 1편 이상 있어 실적을 계산한 경우</p>
+        </div>
+        <div class="state-card">
+          <b>적격 과거작 없음</b>
+          <p>신인·데뷔작이라 비교할 이전 작품이 없는 경우</p>
+        </div>
+        <div class="state-card">
+          <b>자료 미확보</b>
+          <p>작품은 있으나 필모·개봉일·관객 수를 확인하지 못한 경우</p>
+        </div>
+      </div>
+      <ul class="list" style="margin-top:clamp(18px,3vh,28px)">
+        <li data-rise style="--d:3">세 경우를 하나로 합치지 않고, <b>평균으로 일괄 대치하지 않습니다.</b></li>
+        <li data-rise style="--d:4">조회되지 않았다는 이유만으로 관객 수를 <b>0으로 처리하지 않습니다.</b></li>
+        <li data-rise style="--d:5">작품마다 <b>주연 몇 명의 실적을 계산했는지</b> 기록하고, 한 명도 계산할 수 없으면 집계값을 비워 둡니다.</li>
+        <li data-rise style="--d:6">분석마다 <b>실제 사용한 작품 수와 제외 사유</b>를 함께 보고합니다.</li>
+      </ul>
+    </div>
+    <aside class="notes">
+      <div><b>왜 0으로 채우면 안 되나</b> — 0은 "관객이 없었다"는 관측값입니다. 자료가 없는 것과 값이 0인 것은 다르며, 섞으면 상관이 실제보다 강하게 나타납니다.</div>
+      <div><b>기록 항목</b> — 작품별 주연 수, 값 있음 인원, 적격 과거작 없음 인원, 자료 미확보 인원. 표의 부록으로 남겨 재현할 수 있게 합니다.</div>
+    </aside>
+  </section>
+
+  <!-- 08 -->
+  <section class="slide" data-slide data-section="분석">
+    <div class="wrap">
+      <div class="kicker" data-rise>분석 1</div>
+      <h2 data-rise style="--d:1">관객 수의 분포부터 확인한다</h2>
+      <div class="flow" data-rise style="--d:2">
+        <div class="step">
+          <span class="no">01</span>
+          <div class="body">
+            <h4>히스토그램</h4>
+            <p>28일 관객 수가 어디에 몰려 있고 꼬리가 어느 쪽으로 긴지 봅니다</p>
+          </div>
+        </div>
+        <div class="to" aria-hidden="true">→</div>
+        <div class="step">
+          <span class="no">02</span>
+          <div class="body">
+            <h4>요약값 함께 보기</h4>
+            <p>평균 · 중앙값 · 흩어짐 · 사용한 작품 수를 같이 적습니다</p>
+          </div>
+        </div>
+        <div class="to" aria-hidden="true">→</div>
+        <div class="step">
+          <span class="no">03</span>
+          <div class="body">
+            <h4>필요하면 변환·구분</h4>
+            <p>분포와 표본 수를 본 뒤 결정하고, 이유를 기록합니다</p>
           </div>
         </div>
       </div>
+      <ul class="list" style="margin-top:clamp(18px,3vh,28px)">
+        <li data-rise style="--d:3">큰 흥행작을 <b>이상치라는 이유로 자동 제외하지 않습니다.</b> 원자료와 대상 기준을 먼저 확인합니다.</li>
+        <li data-rise style="--d:4">로그 변환이나 집단 구분은 결과를 본 뒤가 아니라 <b>분포를 확인한 뒤</b> 정합니다.</li>
+      </ul>
     </div>
+    <aside class="notes">
+      <div><b>이 장의 성격</b> — 결과 그래프가 아니라 확인 순서입니다. 실제 그림은 자료를 모은 뒤에 나옵니다.</div>
+      <div><b>이상치 판단</b> — 흥행작이 실제로 존재하는 값일 수 있으므로, 먼저 원자료(일별 통계)와 대상 기준(개봉일·실사 여부)을 확인합니다. 제외했다면 사유를 남깁니다.</div>
+    </aside>
+  </section>
+
+  <!-- 09 -->
+  <section class="slide" data-slide data-section="분석">
+    <div class="wrap">
+      <div class="kicker" data-rise>분석 2</div>
+      <h2 data-rise style="--d:1">관객 수와 각 요인은 어떤 관계일까?</h2>
+      <div class="threecol" data-rise style="--d:2">
+        <div class="state-card">
+          <b>수치형 요인</b>
+          <p>산점도와 상관분석 — 상영시간, 첫날 스크린 수, 배우·감독 실적</p>
+        </div>
+        <div class="state-card">
+          <b>범주형 요인</b>
+          <p>집단별 분포 비교 — 장르, 관람등급, 배급사, 개봉 시기. 중앙값과 흩어짐을 함께 봅니다</p>
+        </div>
+        <div class="state-card">
+          <b>추가 점검</b>
+          <p>개봉 규모가 비슷한 작품끼리 비교해, 규모 차이와 별개로 관계가 남는지 봅니다</p>
+        </div>
+      </div>
+      <p class="lead" data-rise style="--d:3;margin-top:clamp(16px,2.6vh,24px)">실적이 좋은 배우의 작품이 더 큰 규모로 개봉하는 경우가 있어, 규모가 비슷한 작품끼리의 비교가 따로 필요합니다.</p>
+      <p class="note" data-rise style="--d:4;margin-top:clamp(14px,2.2vh,20px)">이 비교는 인과관계나 각 요인의 독립적인 효과를 보여 주지 않습니다. 해석은 관계의 방향과 크기까지로 제한합니다.</p>
+      <p class="note" data-rise style="--d:5;margin-top:8px">앞으로 만드는 차트에는 <b>축 이름 · 단위 · 사용한 작품 수 · 출처 · 기준일</b>을 표시합니다.</p>
+    </div>
+    <aside class="notes">
+      <div><b>읽는 순서</b> — ① 수치형 산점도로 방향 확인 → ② 범주형은 집단별 분포로 → ③ 규모가 비슷한 작품끼리 재확인.</div>
+      <div><b>해석 주의</b> — 규모별 비교는 "비슷한 조건에서도 관계가 남는지"를 보는 점검이지, 요인을 분리해 효과를 계산한 것이 아닙니다.</div>
+    </aside>
   </section>
 
   <!-- 10 -->
-  <section class="slide" data-slide data-chapter="10 · 결측">
+  <section class="slide" data-slide data-section="분석">
+    <span class="filmlayer" aria-hidden="true"></span>
     <div class="wrap">
-      <div class="kicker" data-rise>결측</div>
-      <h2 data-rise style="--d:1">빠진 값은<br /><em>왜 빠졌는지</em> 적는다</h2>
-      <p class="lead" data-rise style="--d:2">과거작이 없는 신인과, 과거작은 있지만 자료를 못 구한 경우를 섞으면 표본에 없는 관계가 생깁니다.</p>
-      <div class="chips" style="margin-top:clamp(20px,3vh,28px);--d:3" data-rise >
-        <span class="chip on">값 있음 · 과거작 1편 이상</span>
-        <span class="chip">과거작 없음 · 신인·데뷔작</span>
-        <span class="chip">자료 미확보 · 필모·개봉일 결손</span>
-      </div>
-      <ul class="list" style="margin-top:clamp(20px,3vh,30px)">
-        <li data-rise style="--d:4">이 세 경우를 <b>하나로 합치지 않습니다.</b> 평균으로 채우지도 않습니다.</li>
-        <li data-rise style="--d:5">작품마다 <b>주연 몇 명을 계산했는지</b>, 몇 명이 과거작 없음인지, 몇 명이 자료 미확보인지 남깁니다.</li>
-        <li data-rise style="--d:6">한 명도 계산할 수 없는 작품은 <b>집계값을 비워 둡니다.</b></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 11 -->
-  <section class="slide" data-slide data-chapter="11 · 분포">
-    <div class="wrap">
-      <div class="kicker" data-rise>분석 1</div>
-      <h2 data-rise style="--d:1">먼저 <em>분포</em>를 보고,<br />그다음 방법을 고른다</h2>
-      <ul class="list" data-rise style="--d:2;margin-top:clamp(8px,1.8vh,18px)" >
-        <li>28일 관객은 한쪽으로 길게 늘어질 수 있어, <b>평균과 가운데 값을 함께</b> 봅니다.</li>
-        <li>크게 치우쳐 있으면 로그 변환이나 구간 나누기를, 봉우리가 둘이면 집단 분리를 검토합니다.</li>
-        <li>어떤 변환을 했는지는 <b>이유와 함께</b> 기록합니다.</li>
-      </ul>
-      <p class="note" data-rise style="--d:3;margin-top:clamp(24px,3.6vh,36px)" >변환과 구간화는 미리 정한 처방이 아니라, 분포와 표본 수를 확인한 뒤 내리는 결정입니다. 차트는 분석 후에 채웁니다.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 12 -->
-  <section class="slide" data-slide data-chapter="12 · 관계">
-    <div class="wrap">
-      <div class="kicker" data-rise>분석 2</div>
-      <h2 data-rise style="--d:1">요인별로 <em>관계</em>를 본다</h2>
-      <div class="steps" style="margin-top:clamp(8px,1.8vh,18px)">
-        <div class="s" data-rise style="--d:2">
-          <span class="n">01</span>
-          <div class="t"><b>수치형 요인 — 산점도와 상관</b>상영시간 · 스크린 수 · 배우·감독 실적이 28일 관객과 어느 방향으로, 얼마나 함께 움직이는지 봅니다.</div>
-        </div>
-        <div class="s" data-rise style="--d:3">
-          <span class="n">02</span>
-          <div class="t"><b>범주형 요인 — 집단별 분포 비교</b>장르 · 등급 · 배급사 · 개봉 시기별로 중앙값과 흩어짐을 나란히 비교합니다.</div>
-        </div>
-        <div class="s" data-rise style="--d:4">
-          <span class="n">03</span>
-          <div class="t"><b>추가 점검 — 개봉 규모별 층화</b>규모가 비슷한 작품 안에서도 관계가 남는지 확인합니다. 층화 기준은 결과를 보기 전에 고정합니다.</div>
-        </div>
-      </div>
-      <p class="note" data-rise style="--d:5;margin-top:clamp(18px,2.6vh,26px)" >실적과 개봉 규모·배급사는 서로 <b>관련되어 있을 가능성</b>을 점검할 예정입니다. 아직 결과가 아니며, 방향과 크기는 분석 후에만 말합니다.</p>
-    </div>
-  </section>
-
-  <!-- 13 -->
-  <section class="slide on-red" data-slide data-chapter="13 · 한계">
-    <span class="sprocket bottom" aria-hidden="true"></span>
-    <div class="wrap">
-      <div class="kicker" data-rise>한계와 일정</div>
-      <h2 data-rise style="--d:1">말할 수 있는 것과<br /><em>없는 것</em></h2>
-      <div class="split">
-        <div class="panel on" data-rise style="--d:2">
-          <h4>말할 수 있는 것</h4>
-          <ul>
-            <li>어떤 특성이 흥행과 어느 방향으로 움직였는가</li>
-            <li>그 관련이 어느 정도 크기인가</li>
-            <li>개봉 규모가 비슷한 작품에서도 남는가</li>
+      <div class="kicker" data-rise>정리</div>
+      <h2 data-rise style="--d:1">분석의 한계와 남은 일정</h2>
+      <div class="twocol">
+        <div>
+          <h3 data-rise style="--d:2;margin-bottom:12px">한계</h3>
+          <ul class="list" data-rise style="--d:3">
+            <li>관측 자료이므로 <b>인과관계를 단정할 수 없습니다.</b></li>
+            <li>마케팅비·입소문·배급 협상력 등 <b>자료에 없는 요인</b>이 남습니다.</li>
+            <li>28일 이후의 장기 흥행은 충분히 반영하지 못합니다.</li>
+            <li>분석 대상과 기간을 넘어선 일반화는 피합니다.</li>
           </ul>
         </div>
-        <div class="panel" data-rise style="--d:3">
-          <h4>말할 수 없는 것</h4>
-          <ul>
-            <li>마케팅비 · 입소문 · 배급 협상력 (자료에 없음)</li>
-            <li>“무엇이 흥행을 만들었다”는 인과</li>
-            <li>한 해를 넘어선 일반화</li>
-          </ul>
+        <div data-rise style="--d:4">
+          <h3 style="margin-bottom:12px">일정과 산출물</h3>
+          <div class="sched">
+            <div class="r"><span class="m">10월 말</span><span class="track"><span style="left:0;width:18%"></span></span><span class="what">목록 확정<i>대상 목록</i></span></div>
+            <div class="r"><span class="m">11월</span><span class="track"><span style="left:16%;width:22%"></span></span><span class="what">자료 수집<i>원자료 정리</i></span></div>
+            <div class="r"><span class="m">11월 말</span><span class="track"><span style="left:36%;width:16%"></span></span><span class="what">전처리<i>정제표 · 처리 기록</i></span></div>
+            <div class="r"><span class="m">12월 초</span><span class="track"><span style="left:50%;width:22%"></span></span><span class="what">분석<i>분석 그림</i></span></div>
+            <div class="r"><span class="m">12월 중</span><span class="track"><span style="left:70%;width:26%"></span></span><span class="what">발표 정리<i>발표 덱</i></span></div>
+          </div>
+          <p class="note" style="margin-top:14px">위 일정은 계획이며, 아직 수행하지 않은 단계입니다.</p>
         </div>
       </div>
-      <div class="sched" style="margin-top:clamp(24px,3.6vh,36px);--d:4" data-rise >
-        <div class="r"><span class="m">10월 말</span><span class="track"><span style="left:0;width:16%"></span></span><span class="what">목록 확정</span></div>
-        <div class="r"><span class="m">11월</span><span class="track"><span style="left:14%;width:24%"></span></span><span class="what">자료 수집</span></div>
-        <div class="r"><span class="m">11월 말</span><span class="track"><span style="left:36%;width:14%"></span></span><span class="what">전처리</span></div>
-        <div class="r"><span class="m">12월 초</span><span class="track"><span style="left:48%;width:24%"></span></span><span class="what">분석</span></div>
-        <div class="r"><span class="m">12월 중</span><span class="track"><span style="left:70%;width:26%"></span></span><span class="what">덱 완성</span></div>
-      </div>
     </div>
+    <aside class="notes">
+      <div><b>산출물을 붙인 이유</b> — 단계마다 남는 파일을 정해 두면, 나중에 숫자가 어디서 나왔는지 되짚을 수 있습니다.</div>
+      <div><b>진행 상태</b> — 목록 확정부터 발표 정리까지 모두 예정 단계입니다. 지금까지 한 일은 수집 방법 시험뿐입니다.</div>
+    </aside>
   </section>
 
 </main>
 
 <div class="chrome bottom">
-  <span id="counter"><b>01</b> / 13</span>
-  <span class="hint"><span>키보드 ← →</span><span class="sep"></span><span>클릭</span><span class="sep"></span><span>스와이프</span></span>
+  <span class="hint">
+    <button class="notebtn" id="notesBtn" type="button" aria-pressed="false">노트 (N)</button>
+    <span class="sep"></span>
+    <span>키보드 ← →</span>
+    <span class="sep"></span>
+    <span>클릭 · 스와이프</span>
+  </span>
+  <span class="counter" id="counter"><b>01</b> / 10</span>
 </div>
+
+<section class="notes-panel" id="notesPanel" aria-live="polite">
+  <div class="nh"><span>발표자 노트</span><span id="notesNo">01</span></div>
+  <div class="nc" id="notesBody"></div>
+</section>
 
 <script>
 (function () {
@@ -329,7 +400,11 @@
   const total = slides.length;
   const progress = document.getElementById('progress');
   const counter = document.getElementById('counter');
-  const chapter = document.getElementById('chapter');
+  const secEls = Array.from(document.querySelectorAll('#sections span'));
+  const panel = document.getElementById('notesPanel');
+  const notesBody = document.getElementById('notesBody');
+  const notesNo = document.getElementById('notesNo');
+  const notesBtn = document.getElementById('notesBtn');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const pad = n => String(n).padStart(2, '0');
   let idx = 0, busy = false;
@@ -337,8 +412,17 @@
   function paint() {
     progress.style.width = total > 1 ? (idx / (total - 1) * 100) + '%' : '100%';
     counter.innerHTML = '<b>' + pad(idx + 1) + '</b> / ' + pad(total);
-    chapter.textContent = slides[idx].dataset.chapter || '';
-    document.body.classList.toggle('theme-red', slides[idx].classList.contains('on-red'));
+
+    const sec = slides[idx].dataset.section;
+    const at = secEls.findIndex(el => el.dataset.sec === sec);
+    secEls.forEach((el, i) => {
+      el.classList.toggle('on', i === at);
+      el.classList.toggle('done', i < at);
+    });
+
+    const notes = slides[idx].querySelector('.notes');
+    notesBody.innerHTML = notes ? notes.innerHTML : '';
+    notesNo.textContent = pad(idx + 1);
   }
 
   function go(n) {
@@ -351,10 +435,18 @@
     slides[idx].classList.add('active');
     paint();
     if (location.hash !== '#/' + (idx + 1)) history.replaceState(null, '', '#/' + (idx + 1));
-    setTimeout(() => { busy = false; }, reduce ? 30 : 280);
+    setTimeout(() => { busy = false; }, reduce ? 30 : 260);
+  }
+
+  function toggleNotes(force) {
+    const on = typeof force === 'boolean' ? force : !document.body.classList.contains('show-notes');
+    document.body.classList.toggle('show-notes', on);
+    notesBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
   }
 
   document.addEventListener('keydown', e => {
+    if (e.key === 'n' || e.key === 'N') { e.preventDefault(); toggleNotes(); return; }
+    if (e.key === 'Escape') { toggleNotes(false); return; }
     if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Spacebar', 'Enter'].includes(e.key)) { e.preventDefault(); go(idx + 1); }
     else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); go(idx - 1); }
     else if (e.key === 'Home') { e.preventDefault(); go(0); }
@@ -364,6 +456,8 @@
   document.getElementById('stage').addEventListener('click', e => {
     go(idx + (e.clientX < window.innerWidth * 0.32 ? -1 : 1));
   });
+
+  notesBtn.addEventListener('click', e => { e.stopPropagation(); toggleNotes(); });
 
   let tx = 0;
   document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
@@ -387,7 +481,12 @@
 
   window.addEventListener('hashchange', () => {
     const n = idxFromHash();
-    if (n !== idx) { slides[idx].classList.remove('active'); idx = n; slides[idx].classList.add('active'); paint(); }
+    if (n !== idx) {
+      slides[idx].classList.remove('active');
+      idx = n;
+      slides[idx].classList.add('active');
+      paint();
+    }
   });
 })();
 </script>
