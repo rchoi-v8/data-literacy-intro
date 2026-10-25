@@ -19,6 +19,12 @@ body{
   overflow:hidden;-webkit-font-smoothing:antialiased;
   letter-spacing:-.012em;word-break:keep-all;overflow-wrap:break-word;
 }
+p,li,h1,h2,h3,td,th,.lead,.sub,.note,.question,.case p,.state-card p,.sched .what{text-wrap:pretty}
+
+/* 의미 단위 개행: 데스크톱용(br.d)과 모바일용(br.m) */
+.br-d{display:inline}
+.br-m{display:none}
+
 body::before{
   content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -165,7 +171,7 @@ em{font-style:normal;color:var(--red)}
   font-variant-numeric:tabular-nums;line-height:1.6}
 .case .calc s{text-decoration:none;color:var(--muted);font-weight:600}
 
-.note{font-size:clamp(11.5px,1.02vw,13px);line-height:1.7;color:var(--muted);font-weight:500;max-width:76ch}
+.note{font-size:clamp(11.5px,1.02vw,13px);line-height:1.7;color:var(--muted);font-weight:500;max-width:88ch}
 .note + .note{margin-top:6px}
 .note b{color:var(--sub);font-weight:700}
 
@@ -240,11 +246,17 @@ body.show-notes .notes-panel{transform:none}
 }
 
 @media (max-width:640px){
-  .slide{padding:78px 20px 78px;align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .br-d{display:none}
+  .br-m{display:inline}
+  .slide{padding:72px 20px 66px;align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch}
   h1{font-size:clamp(29px,8.4vw,38px);line-height:1.16}
-  h2{font-size:clamp(22px,6.6vw,29px);max-width:none}
-  .lead{font-size:14.5px}
-  .list li{font-size:14px}
+  h2{font-size:clamp(22px,6.6vw,29px);max-width:none;margin-bottom:14px}
+  .kicker{margin-bottom:16px}
+  .lead{font-size:14px;line-height:1.72}
+  .list{gap:10px}
+  .list li{font-size:13.5px;line-height:1.62}
+  .threecol{gap:12px}
+  .case{margin-top:12px;padding:12px}
   .question{font-size:clamp(18px,5.2vw,22px);max-width:none}
   .subq{grid-template-columns:1fr}
   .pipeline{font-size:11px}
@@ -263,9 +275,10 @@ body.show-notes .notes-panel{transform:none}
 }
 
 @media (max-width:640px) and (max-height:760px){
-  .slide{padding:70px 18px 70px}
+  .slide{padding:66px 18px 60px}
   .list{gap:9px}
-  h2{font-size:clamp(21px,6.2vw,26px)}
+  h2{font-size:clamp(21px,6.2vw,26px);margin-bottom:12px}
+  .kicker{margin-bottom:13px}
 }
 
 @media (prefers-reduced-motion:reduce){
